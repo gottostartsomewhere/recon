@@ -58,7 +58,7 @@ No paid APIs. No database. Two free keys (no credit card) and it runs live.
 ## Run it locally
 
 ```bash
-git clone <your-repo-url> recon && cd recon
+git clone https://github.com/gottostartsomewhere/recon.git && cd recon
 npm install
 npm run dev          # → http://localhost:5173  (Sample mode works with no keys)
 ```

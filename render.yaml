@@ -1,0 +1,17 @@
+# One-click deploy to Render (free tier).
+# In the Render dashboard: New → Blueprint → point at this repo, then set the
+# two secret env vars (GROQ_API_KEY, TAVILY_API_KEY) when prompted.
+services:
+  - type: web
+    name: recon
+    runtime: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: node server/index.js
+    envVars:
+      - key: GROQ_API_KEY
+        sync: false
+      - key: TAVILY_API_KEY
+        sync: false
+      - key: NODE_VERSION
+        value: "20"

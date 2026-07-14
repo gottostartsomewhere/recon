@@ -1,0 +1,100 @@
+{
+  "identity": {
+    "name": "Stripe",
+    "type": "company",
+    "summary": "Stripe is a financial-infrastructure platform that lets businesses accept payments and move money online via APIs."
+  },
+  "vitals": {
+    "founded": "2010",
+    "headquarters": "San Francisco & Dublin",
+    "ceo": "Patrick Collison",
+    "employees": "~8,000",
+    "sector": "Fintech · Payments",
+    "ticker": "Private",
+    "marketCap": "Unknown",
+    "valuation": "~$65B (2024)",
+    "website": "stripe.com"
+  },
+  "sources": [
+    { "id": 1, "title": "Stripe | Financial Infrastructure for the Internet", "url": "https://stripe.com/", "domain": "stripe.com" },
+    { "id": 2, "title": "Stripe — Company Overview & Funding", "url": "https://www.crunchbase.com/organization/stripe", "domain": "crunchbase.com" },
+    { "id": 3, "title": "Stripe raises tender offer valuing it at ~$65B", "url": "https://techcrunch.com/tag/stripe/", "domain": "techcrunch.com" },
+    { "id": 4, "title": "Stripe processes over $1 trillion in payments", "url": "https://www.reuters.com/technology/", "domain": "reuters.com" },
+    { "id": 5, "title": "Adyen vs Stripe: payments market share", "url": "https://www.cnbc.com/payments/", "domain": "cnbc.com" },
+    { "id": 6, "title": "The Collison brothers and Stripe's founding", "url": "https://www.forbes.com/profile/stripe/", "domain": "forbes.com" },
+    { "id": 7, "title": "Stripe expands into stablecoins and billing", "url": "https://www.bloomberg.com/technology/", "domain": "bloomberg.com" },
+    { "id": 8, "title": "Fintech valuations and the road to IPO", "url": "https://www.wsj.com/finance/", "domain": "wsj.com" },
+    { "id": 9, "title": "Stripe developer documentation & products", "url": "https://docs.stripe.com/", "domain": "docs.stripe.com" },
+    { "id": 10, "title": "Payments regulation and interchange scrutiny", "url": "https://www.ft.com/companies/financial-services", "domain": "ft.com" }
+  ],
+  "sections": [
+    {
+      "id": "overview",
+      "title": "What They Do",
+      "bullets": [
+        { "text": "Stripe provides payment-processing and financial infrastructure delivered as developer-first APIs, letting businesses accept cards and other methods with a few lines of code.", "sources": [1, 9] },
+        { "text": "Its product suite has expanded well beyond checkout to include billing/subscriptions, Connect (marketplaces), issuing, invoicing, tax, and fraud tooling (Radar).", "sources": [9, 7] },
+        { "text": "Founded in 2010 by Irish brothers Patrick and John Collison, the company is headquartered in San Francisco and Dublin.", "sources": [6, 2] }
+      ]
+    },
+    {
+      "id": "leadership",
+      "title": "Leadership",
+      "bullets": [
+        { "text": "Patrick Collison serves as CEO; his brother John Collison is President — the pair co-founded Stripe in 2010 and remain in control.", "sources": [6, 2] },
+        { "text": "The company has recruited senior operators from Google, Meta, and Goldman Sachs across engineering, finance, and risk functions.", "sources": [2] },
+        { "text": "Its board and investor base include partners from Sequoia, General Catalyst, and Founders Fund who hold significant influence.", "sources": [2, 8] }
+      ]
+    },
+    {
+      "id": "traction",
+      "title": "Traction & Funding",
+      "bullets": [
+        { "text": "A 2024 employee tender offer valued the still-private company at roughly $65B, down from a 2021 peak of ~$95B but rebounding from 2023 lows.", "sources": [3, 8] },
+        { "text": "Backers include Sequoia, Andreessen Horowitz, Founders Fund, and Thrive Capital across multiple mega-rounds.", "sources": [2] },
+        { "text": "Stripe has scaled to thousands of employees while serving millions of businesses from startups to large enterprises.", "sources": [1, 2] }
+      ]
+    },
+    {
+      "id": "financials",
+      "title": "Financials & Stock",
+      "bullets": [
+        { "text": "Stripe remains privately held — there is no public ticker or market cap; liquidity comes via periodic employee tender offers rather than a listing.", "sources": [8, 3] },
+        { "text": "The company reported crossing $1 trillion in total payment volume processed in a single year, rivaling major card networks' merchant volume.", "sources": [4] },
+        { "text": "Revenue is driven by a small percentage take-rate on payment volume plus subscription fees on higher-margin software products like Billing and Tax.", "sources": [7, 9] }
+      ]
+    },
+    {
+      "id": "landscape",
+      "title": "Competitive Landscape",
+      "bullets": [
+        { "text": "Its closest large-scale rival is Adyen, which competes hard for enterprise merchants on take-rate and unified commerce.", "sources": [5] },
+        { "text": "PayPal (Braintree) and Block (Square) compete on different segments — checkout ubiquity and SMB/in-person respectively.", "sources": [5] },
+        { "text": "Stripe differentiates on developer experience and breadth of programmable money-movement products rather than lowest price.", "sources": [1, 9] }
+      ]
+    },
+    {
+      "id": "risks",
+      "title": "Risks & Red Flags",
+      "bullets": [
+        { "text": "Remaining private with no confirmed IPO timeline creates liquidity pressure for employees and early investors.", "sources": [8, 3] },
+        { "text": "Payments is a thin-margin, high-competition business; take-rate compression from Adyen and in-housing by large merchants is a persistent threat.", "sources": [5] },
+        { "text": "Interchange and payments regulation across the US and EU could pressure economics.", "sources": [10] }
+      ]
+    },
+    {
+      "id": "signals",
+      "title": "Recent Developments",
+      "bullets": [
+        { "text": "Stripe has pushed into stablecoin-based money movement, signaling a bet on crypto rails for cross-border payments.", "sources": [7] },
+        { "text": "Continued expansion of its Billing and Tax products targets recurring-revenue software companies.", "sources": [7, 9] },
+        { "text": "Secondary-market tender offers indicate the company is managing employee liquidity while staying private.", "sources": [3] }
+      ]
+    }
+  ],
+  "verdict": {
+    "verdict": "Stripe is the category-defining developer-first payments platform with trillion-dollar processing scale and an expanding financial-infrastructure stack. Its core strength is unmatched developer breadth; the single biggest risk is take-rate compression in a brutally competitive, thin-margin market while it remains private with no clear IPO path.",
+    "confidence": 82,
+    "rationale": "Findings are corroborated across multiple high-quality financial-press sources with consistent figures."
+  }
+}

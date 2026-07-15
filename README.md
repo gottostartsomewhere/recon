@@ -7,6 +7,10 @@
 An AI analyst that runs open-source reconnaissance across the live web and returns a
 cited, investor-grade **intelligence dossier** on any company — in seconds.
 
+### ▶ [**Try the live demo**](https://recon-ckfe.onrender.com/)
+
+<sub>Free host — if it's been idle, the first load takes ~50s to wake. Hit **Sample file** for an instant tour.</sub>
+
 *Built for the [Build Beyond Hackathon](https://build-beyond-hackathon.devpost.com/).*
 
 </div>

@@ -8,6 +8,10 @@
 
 **Tagline:** Name a target. Get the file. — an AI analyst that assembles a cited intelligence dossier on any company in seconds.
 
+**Live demo:** https://recon-ckfe.onrender.com/
+
+**Repo:** https://github.com/gottostartsomewhere/recon
+
 **Built with:** react, vite, node.js, express, groq, tavily, server-sent-events, llama-3.3
 
 ---

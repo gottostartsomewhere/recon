@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { streamResearch } from './lib/stream.js';
+import Landing from './Landing.jsx';
 
 const SECTION_ORDER = ['overview', 'leadership', 'traction', 'financials', 'landscape', 'risks', 'signals'];
 const SECTION_TITLE = {
@@ -44,6 +45,7 @@ export default function App() {
   const [running, setRunning] = useState(false);
   const [s, setS] = useState(initialState);
   const abortRef = useRef(null);
+  const intakeInputRef = useRef(null);
 
   const onEvent = useCallback((type, data) => {
     setS((prev) => {
@@ -105,20 +107,31 @@ export default function App() {
 
   const opened = s.phase !== 'idle';
 
+  /* Landing CTA: put the cursor back in the intake field without the focus
+     call yanking the page up before the smooth scroll can run. */
+  const focusIntake = useCallback(() => {
+    intakeInputRef.current?.focus({ preventScroll: true });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
+
   return (
     <div className="desk">
       <Masthead started={opened} demo={s.demo} />
       {!opened ? (
-        <Intake
-          query={query}
-          setQuery={setQuery}
-          onOpen={() => run(query)}
-          onExample={(ex) => {
-            setQuery(ex);
-            run(ex);
-          }}
-          onSample={() => run('', { demo: true })}
-        />
+        <>
+          <Intake
+            query={query}
+            setQuery={setQuery}
+            inputRef={intakeInputRef}
+            onOpen={() => run(query)}
+            onExample={(ex) => {
+              setQuery(ex);
+              run(ex);
+            }}
+            onSample={() => run('', { demo: true })}
+          />
+          <Landing onStart={focusIntake} onSample={() => run('', { demo: true })} />
+        </>
       ) : (
         <Report
           entity={entity}
@@ -173,7 +186,7 @@ function Crosshair() {
 }
 
 /* ───────────────────────── Intake ─────────────────────────── */
-function Intake({ query, setQuery, onOpen, onExample, onSample }) {
+function Intake({ query, setQuery, inputRef, onOpen, onExample, onSample }) {
   return (
     <main className="intake">
       <Reticle />
@@ -203,6 +216,7 @@ function Intake({ query, setQuery, onOpen, onExample, onSample }) {
           <div className="subject-row">
             <input
               autoFocus
+              ref={inputRef}
               className="subject-input"
               placeholder="Company, product, or ticker"
               value={query}
@@ -217,6 +231,11 @@ function Intake({ query, setQuery, onOpen, onExample, onSample }) {
         <div className="recent">
           <FilesDropdown onPick={onExample} onSample={onSample} />
         </div>
+      </div>
+
+      <div className="scroll-cue" aria-hidden="true">
+        <span>How it works</span>
+        <i />
       </div>
     </main>
   );

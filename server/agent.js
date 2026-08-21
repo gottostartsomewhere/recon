@@ -154,20 +154,34 @@ async function synthSection(identity, sec, secSources, emit) {
   const context = secSources
     .map((s) => `[${s.id}] ${s.title} (${s.domain})\n${(s.content || '').slice(0, 700)}`)
     .join('\n\n');
+
+  // Models know well-known companies from pretraining and will happily write a
+  // fluent, uncited overview from memory. That is exactly what this product
+  // claims not to do, so name the legal ids and refuse anything outside them.
+  const allowedIds = secSources.map((s) => s.id);
+  const allowed = new Set(allowedIds);
+
   try {
     const out = await groqChat(
       [
         {
           role: 'system',
           content:
-            'You are a sharp investment / due-diligence analyst. Use ONLY the provided sources. Every bullet must be grounded and cite the source id(s) it came from. Be concrete: names, numbers, dates. Respond ONLY with strict JSON.',
+            'You are a sharp investment / due-diligence analyst. Use ONLY the provided sources. ' +
+            'You are forbidden from using anything you know about the entity from memory: if a fact ' +
+            'is not stated in the sources below, it does not go in the dossier. Every bullet must cite ' +
+            'the source id(s) it came from. Be concrete: names, numbers, dates. Respond ONLY with strict JSON.',
         },
         {
           role: 'user',
           content:
             `Entity: ${identity.name} (${identity.type})\nSection: ${sec.title}\n\nSOURCES:\n${context}\n\n` +
             `Return JSON: {"bullets":[{"text": concise factual sentence, "sources": [source ids used]}]}. ` +
-            `3-5 bullets. If sources are thin or conflict, say so honestly in a bullet. Never invent facts.`,
+            `3-5 bullets. ` +
+            `The ONLY valid source ids are: ${allowedIds.join(', ')}. ` +
+            `Every bullet MUST cite at least one of them, and cite the id shown in brackets above, ` +
+            `not the position in the list. Drop any claim you cannot attribute to one of these sources. ` +
+            `If sources are thin or conflict, say so honestly in a bullet and cite what you do have. Never invent facts.`,
         },
       ],
       { json: true, temperature: 0.25 }
@@ -177,7 +191,11 @@ async function synthSection(identity, sec, secSources, emit) {
       .filter((b) => b && b.text)
       .map((b) => ({
         text: String(b.text),
-        sources: Array.isArray(b.sources) ? b.sources.filter((n) => Number.isInteger(n)) : [],
+        // Coerce (some models answer "3"), then keep only ids actually shown to
+        // the model for this section, which drops positional and invented ids.
+        sources: Array.isArray(b.sources)
+          ? [...new Set(b.sources.map(Number).filter((n) => Number.isInteger(n) && allowed.has(n)))]
+          : [],
       }));
     if (bullets.length === 0) {
       bullets = [{ text: 'Analysis produced no structured findings for this section.', sources: [] }];
@@ -194,10 +212,14 @@ async function synthSection(identity, sec, secSources, emit) {
 }
 
 async function synthVitals(identity, sources) {
+  // Key facts (CEO, HQ, founding date) are often in later sources, and a run
+  // gathers ~34 of them. The old 5,000-char cap cut the digest off around
+  // source 14, hiding those facts from the extractor for no benefit: the
+  // models on this chain carry a 131k-token context, so this is still tiny.
   const digest = sources
-    .map((s) => `[${s.id}] ${s.title} (${s.domain})\n${(s.content || '').slice(0, 350)}`)
+    .map((s) => `[${s.id}] ${s.title} (${s.domain})\n${(s.content || '').slice(0, 500)}`)
     .join('\n\n')
-    .slice(0, 5000);
+    .slice(0, 14000);
   try {
     const out = await groqChat(
       [

@@ -14,16 +14,38 @@ export function hasKeys() {
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
+// Groq retires hosted models without much notice — llama-3.3-70b-versatile
+// vanished from under this app and every call started answering 404. Keep a
+// chain so one retirement degrades the dossier instead of emptying it.
+const MODEL_PRIMARY = process.env.GROQ_MODEL || 'openai/gpt-oss-120b';
+const MODEL_FALLBACK = process.env.GROQ_MODEL_FALLBACK || 'openai/gpt-oss-20b';
+
+// gpt-oss models burn completion tokens on hidden reasoning before answering.
+// This work is extraction and grounded summary, not deduction, so the extra
+// thinking mostly costs latency and free-tier token quota. Only these models
+// accept the parameter, so never send it to anything else.
+const REASONING_EFFORT = process.env.GROQ_REASONING_EFFORT || 'low';
+function applyEffort(body) {
+  if (REASONING_EFFORT && /gpt-oss/.test(body.model)) {
+    body.reasoning_effort = REASONING_EFFORT;
+  } else {
+    delete body.reasoning_effort;
+  }
+}
+
 export async function groqChat(messages, { json = false, temperature = 0.3, model, retries = 4 } = {}) {
   const key = process.env.GROQ_API_KEY;
   if (!key) throw new Error('GROQ_API_KEY not set');
 
-  const body = {
-    model: model || process.env.GROQ_MODEL || 'llama-3.3-70b-versatile',
-    messages,
-    temperature,
-  };
+  // An explicit model argument opts out of the fallback chain.
+  const chain = model
+    ? [model]
+    : [MODEL_PRIMARY, MODEL_FALLBACK].filter((m, i, all) => m && all.indexOf(m) === i);
+  let rung = 0;
+
+  const body = { model: chain[0], messages, temperature };
   if (json) body.response_format = { type: 'json_object' };
+  applyEffort(body);
 
   for (let attempt = 0; ; attempt++) {
     const res = await fetch(GROQ_URL, {
@@ -39,6 +61,17 @@ export async function groqChat(messages, { json = false, temperature = 0.3, mode
       await sleep(wait * 1000 + 300);
       continue;
     }
+
+    // A retired or unavailable model answers 404 (and sometimes 400). Drop to
+    // the next rung rather than failing the section outright.
+    if ((res.status === 404 || res.status === 400) && rung < chain.length - 1) {
+      rung += 1;
+      body.model = chain[rung];
+      applyEffort(body); // the new rung may not accept the parameter
+      console.warn(`[recon] groq model "${chain[rung - 1]}" unavailable, falling back to "${chain[rung]}"`);
+      continue;
+    }
+
     if (!res.ok) {
       const t = await res.text().catch(() => '');
       throw new Error(`Groq ${res.status}: ${t.slice(0, 180)}`);

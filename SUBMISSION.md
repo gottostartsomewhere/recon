@@ -12,7 +12,7 @@
 
 **Repo:** https://github.com/gottostartsomewhere/recon
 
-**Built with:** react, vite, node.js, express, groq, tavily, server-sent-events, llama-3.3
+**Built with:** react, vite, node.js, express, groq, tavily, server-sent-events, gpt-oss
 
 ---
 
@@ -35,7 +35,7 @@ It runs out of the box in a scripted Sample mode, and flips to live research wit
 
 - **Frontend:** Vite + React. The agent's progress and each finished section stream into the UI over Server-Sent Events, so you watch the dossier assemble — loading sections appear as redaction bars that "declassify" into text.
 - **Backend:** A Node/Express server runs the agent loop: identify the target → run seven web searches in parallel → extract structured key facts → synthesize each section constrained to the retrieved sources (citing source IDs) → weigh everything into a verdict + confidence score.
-- **Models & data:** Groq (Llama 3.3 70B) for fast, free inference; Tavily for web search that returns page content for grounding. Zero paid APIs, no database.
+- **Models & data:** Groq (GPT-OSS 120B, with an automatic fallback to 20B if a model is retired or throttled) for fast, free inference; Tavily for web search that returns page content for grounding. Zero paid APIs, no database.
 
 ## Challenges we ran into
 

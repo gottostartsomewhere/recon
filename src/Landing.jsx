@@ -19,7 +19,7 @@ const STAGES = [
   {
     key: 'SYNTHESIS',
     title: 'Synthesis',
-    body: 'Llama 3.3 70B reads what came back and writes each section, attaching exhibit numbers to individual claims.',
+    body: 'An open-weights model on Groq reads what came back and writes each section, attaching exhibit numbers to individual claims.',
     readout: 'cited claims',
   },
   {

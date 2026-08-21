@@ -54,7 +54,7 @@ The frontend renders it as a live-assembling dossier, with loading sections show
 |---|---|---|
 | Frontend | **Vite + React** | Fast, streams events into a live UI |
 | Backend | **Node + Express** (SSE) | Holds keys, streams the agent's steps |
-| LLM | **Groq** (`llama-3.3-70b-versatile`) | Free tier, extremely fast inference |
+| LLM | **Groq** (`openai/gpt-oss-120b`, falls back to `openai/gpt-oss-20b`) | Free tier, extremely fast inference |
 | Search | **Tavily** | Free tier, returns page *content* for grounding |
 
 No paid APIs. No database. Two free keys (no credit card) and it runs live.

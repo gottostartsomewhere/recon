@@ -114,27 +114,27 @@ const WORKPLACE = {
 
 export const INTENTS = {
   client: {
-    label: 'They will pay me',
+    label: 'Take them on as a client',
     action: 'take on this organisation as a client and do work for them on credit',
     sections: [IDENTITY, PAYMENT, FINANCIAL, LEGAL, REPUTATION],
   },
   vendor: {
-    label: 'I will pay them',
+    label: 'Hire them as a vendor',
     action: 'hire this organisation as a vendor or contractor and pay them',
     sections: [IDENTITY, DELIVERY, REPUTATION, LEGAL, FINANCIAL],
   },
   partner: {
-    label: 'We will partner',
+    label: 'Partner with them',
     action: 'enter a business partnership with this organisation',
     sections: [IDENTITY, OWNERSHIP, PARTNERS, LEGAL, FINANCIAL],
   },
   employer: {
-    label: 'They offered me a job',
+    label: 'Accept their job offer',
     action: 'accept a job offer from this organisation',
     sections: [IDENTITY, HIRING, WORKPLACE, FINANCIAL, RECENT],
   },
   general: {
-    label: 'Just checking them out',
+    label: 'Just look them up',
     action: 'form a general view of this organisation',
     sections: [IDENTITY, BUSINESS, FINANCIAL, LEGAL, REPUTATION, RECENT],
   },

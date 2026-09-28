@@ -178,6 +178,29 @@ button { font-family: inherit; }
 .open-btn:hover:not(:disabled) { transform: translateX(3px); }
 .open-btn:disabled { color: var(--ink-3); cursor: not-allowed; }
 
+/* what the user is about to do: typewritten index tabs */
+.intent { border: none; margin: 26px 0 0; padding: 0; min-width: 0; }
+.intent-legend { padding: 0; margin-bottom: 10px; }
+.intent-opts { display: flex; flex-wrap: wrap; gap: 8px; }
+.intent-opt {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 12px;
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  font-family: var(--twr);
+  font-size: 12px;
+  letter-spacing: 0.03em;
+  color: var(--ink-2);
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+.intent-opt:hover { color: var(--ink); border-color: var(--rule-strong); }
+.intent-opt.on { color: var(--accent); border-color: var(--accent); background: var(--accent-faint); }
+.intent-opt input { position: absolute; opacity: 0; width: 1px; height: 1px; margin: 0; pointer-events: none; }
+.intent-opt:focus-within { outline: 2px solid var(--accent); outline-offset: 2px; }
+
 .recent { margin-top: 24px; }
 .dropdown { position: relative; display: inline-block; }
 .dropdown-trigger {
@@ -199,7 +222,7 @@ button { font-family: inherit; }
   top: calc(100% + 8px);
   left: 0;
   z-index: 10;
-  min-width: 260px;
+  min-width: 320px;
   list-style: none;
   margin: 0;
   padding: 6px;
@@ -227,7 +250,7 @@ button { font-family: inherit; }
 .dropdown-item:hover { background: var(--paper-3); }
 .dropdown-item-name { font-family: var(--display); font-weight: 500; font-size: 15px; color: var(--ink); }
 .dropdown-item.sample .dropdown-item-name { color: var(--accent); }
-.dropdown-item-meta { font-family: var(--twr); font-size: 10.5px; letter-spacing: 0.04em; color: var(--ink-3); }
+.dropdown-item-meta { font-family: var(--twr); font-size: 10.5px; letter-spacing: 0.04em; color: var(--ink-3); white-space: nowrap; }
 .dropdown-sep { border-top: 1px solid var(--rule); margin-top: 4px; padding-top: 4px; }
 
 .process { margin-top: 56px; padding-top: 22px; border-top: 1px solid var(--rule); display: flex; flex-wrap: wrap; gap: 10px 30px; }
@@ -286,7 +309,8 @@ button { font-family: inherit; }
 
 /* file header */
 .filehead { margin-bottom: 40px; }
-.filehead-top { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; margin-bottom: 18px; }
+.filehead-top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 6px 16px; margin-bottom: 18px; }
+.filehead-top .lbl:last-child { white-space: nowrap; }
 .fh-subject {
   font-family: var(--display);
   font-weight: 800;
@@ -298,6 +322,8 @@ button { font-family: inherit; }
 }
 .fh-type { font-family: var(--twr); font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-3); }
 .fh-summary { font-family: var(--serif); font-size: 19px; line-height: 1.55; color: var(--ink-2); margin: 18px 0 0; max-width: 60ch; font-style: italic; }
+.fh-not { margin: 14px 0 0; font-family: var(--serif); font-size: 14.5px; line-height: 1.5; color: var(--ink-3); max-width: 64ch; }
+.fh-not .lbl { display: block; margin-bottom: 4px; }
 .fh-meta { display: flex; flex-wrap: wrap; gap: 26px; margin-top: 22px; }
 .fh-meta div { font-family: var(--twr); font-size: 11px; letter-spacing: 0.04em; color: var(--ink-3); }
 .fh-meta b { display: block; color: var(--ink); font-weight: 700; font-size: 12px; margin-top: 3px; letter-spacing: 0.02em; }
@@ -350,8 +376,38 @@ button { font-family: inherit; }
 .stamp.low { color: var(--red); }
 .stamp.pending { color: var(--ink-3); }
 .stamp-top { font-size: 8px; letter-spacing: 0.16em; }
-.stamp-num { font-size: 30px; font-weight: 700; letter-spacing: -0.02em; margin: 3px 0 1px; }
+.stamp-word { font-size: 17px; font-weight: 700; letter-spacing: 0.06em; margin: 6px 0 4px; }
 .stamp-tier { font-size: 8.5px; letter-spacing: 0.12em; font-weight: 700; }
+
+/* only the verdict text needs to clear the stamp; what sits below it uses the
+   full column */
+@media (min-width: 621px) {
+  .tally-wrap, .flags, .asks { margin-right: -120px; }
+}
+
+/* the counts the confidence number is computed from */
+.tally-wrap { margin-top: 26px; }
+.tally { display: flex; flex-wrap: wrap; gap: 14px 28px; margin: 0; }
+.tally-i dt { font-family: var(--twr); font-size: 9.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-3); }
+.tally-i dd { margin: 4px 0 0; font-family: var(--display); font-weight: 600; font-size: 18px; letter-spacing: -0.01em; color: var(--ink); font-variant-numeric: tabular-nums; }
+.tally-i.bad dd { color: var(--red); }
+.tally-note { font-family: var(--serif); font-style: italic; font-size: 13.5px; line-height: 1.5; color: var(--ink-3); margin: 14px 0 0; max-width: 58ch; }
+
+.flags, .asks { margin-top: 30px; }
+.flags ul, .asks ol { margin: 12px 0 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.flags li, .asks li { font-family: var(--serif); font-size: 16px; line-height: 1.55; color: var(--ink); }
+.flags li { border-left: 2px solid var(--red); padding-left: 14px; }
+.asks ol { counter-reset: ask; }
+.asks li { counter-increment: ask; display: flex; gap: 12px; }
+.asks li::before {
+  content: counter(ask, decimal-leading-zero);
+  font-family: var(--twr);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--accent);
+  padding-top: 4px;
+  flex: none;
+}
 .stamp.stamped { animation: stampIn 0.42s cubic-bezier(0.2, 1.5, 0.4, 1); }
 @keyframes stampIn {
   0% { transform: rotate(-4deg) scale(2.2); opacity: 0; }
@@ -365,8 +421,65 @@ button { font-family: inherit; }
 .entry-no { font-family: var(--twr); font-weight: 700; font-size: 12px; color: var(--accent); letter-spacing: 0.05em; }
 .entry-title { font-family: var(--twr); font-weight: 700; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink); margin: 0; }
 
+.entry-tally { margin-left: auto; font-family: var(--twr); font-size: 10.5px; letter-spacing: 0.06em; color: var(--ink-3); white-space: nowrap; }
+.entry-tally.wait { color: var(--accent); opacity: 0.7; }
+
 .findings { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 16px; }
 .finding { font-family: var(--serif); font-size: 17px; line-height: 1.6; color: var(--ink); }
+.finding.meta { font-family: var(--twr); font-size: 12px; letter-spacing: 0.04em; color: var(--ink-3); }
+
+/* Rulings. A draft reads dimmed until the judge has seen it; a claim that
+   held brightens; a struck claim has the redaction bar come down over it and
+   lift again, leaving it struck through with the reason underneath. */
+.claim { position: relative; transition: color 0.6s var(--ease); }
+.finding.draft .claim { color: var(--ink-2); }
+.finding.struck .claim {
+  color: var(--ink-3);
+  text-decoration: line-through;
+  text-decoration-color: var(--red);
+  text-decoration-thickness: 1.5px;
+}
+.finding.struck .claim::after {
+  content: '';
+  position: absolute;
+  inset: -1px -2px;
+  background: var(--redact);
+  transform-origin: left center;
+  pointer-events: none;
+  animation: redact 1.5s var(--ease-io) forwards;
+}
+@keyframes redact {
+  0% { transform: scaleX(0); opacity: 1; }
+  35% { transform: scaleX(1); opacity: 1; }
+  70% { transform: scaleX(1); opacity: 1; }
+  100% { transform: scaleX(1); opacity: 0; }
+}
+
+.mark {
+  font-family: var(--twr);
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-left: 8px;
+  vertical-align: 2px;
+  white-space: nowrap;
+}
+.mark.held { color: var(--green); font-size: 11px; letter-spacing: 0; vertical-align: 1px; animation: fadeUp 0.4s ease; }
+.mark.struck { color: var(--red); animation: fadeUp 0.4s ease 0.5s both; }
+.mark.corrected {
+  color: var(--accent);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  border-bottom: 1px dotted var(--accent-dim);
+}
+.mark.corrected:hover { color: var(--accent-2); }
+.ruling-note { margin-top: 6px; font-family: var(--serif); font-size: 14px; line-height: 1.5; font-style: italic; color: var(--ink-3); animation: fadeUp 0.4s ease; }
+.ruling-note .was { margin-bottom: 3px; }
+.ruling-note s { text-decoration-color: var(--ink-3); }
+.finding.struck .ruling-note { animation-delay: 0.6s; animation-fill-mode: both; }
 .enter { animation: fadeUp 0.45s ease; }
 @keyframes fadeUp { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: none; } }
 
@@ -413,6 +526,20 @@ button { font-family: inherit; }
 .ref-link:hover .ref-title { color: var(--ink); }
 .ref-domain { font-family: var(--twr); font-size: 10.5px; color: var(--ink-3); margin-top: 2px; }
 .refs-empty { font-family: var(--twr); font-size: 12px; color: var(--ink-3); }
+
+/* exhibits screened out as belonging to someone else */
+.aside { margin-top: 26px; border-top: 1px solid var(--rule); padding-top: 16px; }
+.aside summary { cursor: pointer; display: flex; align-items: baseline; gap: 14px; list-style: none; }
+.aside summary::-webkit-details-marker { display: none; }
+.aside summary::after { content: '▾'; font-family: var(--twr); font-size: 11px; color: var(--accent); }
+.aside[open] summary::after { content: '▴'; }
+.aside-count { font-family: var(--twr); font-size: 11.5px; color: var(--ink-2); letter-spacing: 0.02em; }
+.aside-list { list-style: none; margin: 18px 0 0; padding: 0; column-count: 2; column-gap: 34px; }
+.aside-list .ref-title { color: var(--ink-3); text-decoration: line-through; text-decoration-color: var(--rule-strong); }
+.aside-list .ref-id { color: var(--ink-3); }
+
+.costline { margin: 28px 0 0; font-family: var(--twr); font-size: 11.5px; line-height: 1.6; color: var(--ink-3); max-width: 72ch; }
+.costline b { color: var(--ink-2); font-weight: 700; }
 
 .export {
   margin-top: 30px;
@@ -608,6 +735,7 @@ button { font-family: inherit; }
 .dpath.dim { stroke: var(--rule); }
 .dfill-accent { fill: var(--accent); }
 .dfill-ink { fill: var(--ink-2); }
+.dfill-red { fill: var(--red); }
 .dring { fill: none; stroke: var(--accent-dim); stroke-width: 1; }
 .dstroke-accent { fill: none; stroke: var(--accent); stroke-width: 1.2; }
 .ddoc { fill: var(--accent-faint); stroke: var(--accent); stroke-width: 1.2; }
@@ -833,7 +961,10 @@ button { font-family: inherit; }
 
 /* responsive */
 @media (max-width: 620px) {
-  .refs-list { column-count: 1; }
+  .refs-list, .aside-list { column-count: 1; }
+  .entry-head { flex-wrap: wrap; row-gap: 6px; }
+  .entry-tally { margin-left: 0; flex-basis: 100%; }
+  .intent-opt { font-size: 11.5px; padding: 7px 10px; }
   .assessment { padding-right: 0; }
   .stamp { position: static; display: inline-block; transform: rotate(-3deg); margin-top: 18px; }
   .subject-row { flex-wrap: wrap; }
@@ -847,7 +978,7 @@ button { font-family: inherit; }
     transition-duration: 0.001ms !important;
     transition-delay: 0s !important;
   }
-  .reveal::after { display: none; }
+  .reveal::after, .finding.struck .claim::after { display: none; }
   /* landing: resolve every reveal to its finished state */
   .lrise { opacity: 1; transform: none; }
   .rline .rl-t { clip-path: none; }
@@ -869,5 +1000,6 @@ button { font-family: inherit; }
   /* the landing is a pitch, not part of the file being exported */
   .landing, .scroll-cue { display: none !important; }
   .report { padding: 0; max-width: none; }
+  .finding.struck .claim::after { display: none; }
   .stamp { box-shadow: inset 0 0 0 3px #fff, inset 0 0 0 4px currentColor; }
 }

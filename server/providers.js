@@ -24,7 +24,11 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 // renamed or retired model degrades the dossier instead of emptying it (Groq
 // did exactly that to this app in August).
 export const TIERS = {
-  fast: [process.env.NEMOTRON_FAST || 'nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B', 'nvidia/Nemotron-3_5-Lightning'],
+  fast: [
+    process.env.NEMOTRON_FAST || 'nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B',
+    'nvidia/Nemotron-3_5-Lightning',
+    'nvidia/nemotron-3-super-120b-a12b',
+  ],
   agent: [process.env.NEMOTRON_AGENT || 'nvidia/nemotron-3-super-120b-a12b', 'nvidia/Nemotron-3-Ultra-550b-a55b'],
   judge: [process.env.NEMOTRON_JUDGE || 'nvidia/Nemotron-3-Ultra-550b-a55b', 'nvidia/nemotron-3-super-120b-a12b'],
 };
@@ -32,6 +36,20 @@ export const TIERS = {
 // Nemotron 3 reasons before answering by default. Extraction does not need it
 // and pays for it in latency, so only the judge thinks unless told otherwise.
 const THINK_DEFAULT = { fast: false, agent: false, judge: true };
+
+// Serverless endpoints queue under load: Nano once took 12s to return
+// {"ok":true} and recovered a minute later. A call that overruns its tier's
+// limit benches that model for a while and moves down the chain, so one
+// congested endpoint slows a single call instead of the whole check.
+const TIMEOUT_MS = { fast: 12000, agent: 30000, judge: 120000 };
+const BENCH_MS = 2 * 60 * 1000;
+const benched = new Map(); // model id → time it may be tried again
+
+function available(chain) {
+  const now = Date.now();
+  const ready = chain.filter((m) => !(benched.get(m) > now));
+  return ready.length ? ready : chain;
+}
 
 // USD per 1M tokens [input, output], from the Token Factory model pages (Sept 2026).
 const PRICES = [
@@ -115,13 +133,14 @@ let templateKwargsRejected = false;
 // message when `tools` are given, and plain text otherwise.
 export async function llm(
   messages,
-  { tier = 'fast', json = false, temperature = 0.3, think, tools, toolChoice, maxTokens, retries = 4 } = {}
+  { tier = 'fast', json = false, temperature = 0.3, think, tools, toolChoice, maxTokens, retries = 4, timeoutMs } = {}
 ) {
   if (!process.env.NEBIUS_API_KEY) throw new Error('NEBIUS_API_KEY not set');
 
-  const chain = await resolveTier(tier);
+  const chain = available(await resolveTier(tier));
   let rung = 0;
   const thinking = think ?? THINK_DEFAULT[tier] ?? false;
+  const timeout = timeoutMs ?? TIMEOUT_MS[tier] ?? 60000;
 
   const body = { model: chain[0], messages, temperature };
   if (json) body.response_format = { type: 'json_object' };
@@ -133,11 +152,28 @@ export async function llm(
   if (!templateKwargsRejected) body.chat_template_kwargs = { enable_thinking: thinking };
 
   for (let attempt = 0; ; attempt++) {
-    const res = await fetch(`${NEBIUS_URL}/chat/completions`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', ...auth() },
-      body: JSON.stringify(body),
-    });
+    let res;
+    let data;
+    try {
+      res = await fetch(`${NEBIUS_URL}/chat/completions`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', ...auth() },
+        body: JSON.stringify(body),
+        signal: AbortSignal.timeout(timeout),
+      });
+      // Read the body under the same deadline; a stalled stream is as slow as a stalled start.
+      if (res.ok) data = await res.json();
+    } catch (e) {
+      if (e.name !== 'TimeoutError' && e.name !== 'AbortError') throw e;
+      benched.set(body.model, Date.now() + BENCH_MS);
+      if (rung < chain.length - 1) {
+        rung += 1;
+        body.model = chain[rung];
+        console.warn(`[recon] "${chain[rung - 1]}" took over ${timeout / 1000}s, benched; using "${chain[rung]}"`);
+        continue;
+      }
+      throw new Error(`Token Factory timed out after ${timeout / 1000}s on ${body.model}`);
+    }
 
     if (res.status === 429 && attempt < retries) {
       const ra = parseFloat(res.headers.get('retry-after')) || 0;
@@ -167,7 +203,6 @@ export async function llm(
       throw new Error(`Token Factory ${res.status}: ${t.slice(0, 180)}`);
     }
 
-    const data = await res.json();
     record(data.model || body.model, data.usage);
     const msg = data.choices?.[0]?.message || {};
     if (tools) return { ...msg, content: stripThinking(msg.content), model: data.model || body.model };

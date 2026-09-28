@@ -1,54 +1,55 @@
 import React, { useCallback, useMemo, useRef, useState } from 'react';
 import { useReveal, useScrollProgress, seg, stagger, lerp } from './lib/motion.js';
 
-/* The four phases below are the ones the agent actually streams
-   (see PHASE_LABEL in App.jsx), so the diagram tracks real work. */
+/* The four phases below are ones the agent actually streams (see PHASE_LABEL
+   in App.jsx), so the diagram tracks real work. */
 const STAGES = [
   {
     key: 'INTAKE',
     title: 'Intake',
-    body: 'The target resolves to an identity, then splits into the seven sections every dossier carries.',
-    readout: '7 sections',
+    body: 'Nemotron Super works out which organisation you mean and which are only similarly named. What you are about to do decides the questions.',
+    readout: '5–6 questions',
   },
   {
     key: 'RECON',
     title: 'Recon',
-    body: 'All seven searches go out to the live web at once. Every result keeps its URL and domain as a numbered exhibit.',
-    readout: '5 results each',
+    body: 'Super investigates through Tavily: searching, reading whole pages, mapping the company’s own site. Pages about other organisations are set aside.',
+    readout: 'up to 10 tool calls',
   },
   {
-    key: 'SYNTHESIS',
-    title: 'Synthesis',
-    body: 'An open-weights model on Groq reads what came back and writes each section, attaching exhibit numbers to individual claims.',
-    readout: 'cited claims',
+    key: 'CROSS-EXAM',
+    title: 'Cross-exam',
+    body: 'Nano drafts each section. Nemotron Ultra then re-reads the page behind every claim and rules: held, corrected, or struck.',
+    readout: 'every claim',
   },
   {
     key: 'VERDICT',
     title: 'Verdict',
-    body: 'A confidence score is stamped on the file, set by how well the exhibits corroborate one another.',
-    readout: '0–100 confidence',
+    body: 'Ultra decides from surviving claims only: proceed, caution or stop, with what to ask them first. Confidence is computed, not self-reported.',
+    readout: 'proceed · caution · stop',
   },
 ];
 
-const ROWS = [
-  'WHAT THEY DO',
-  'LEADERSHIP',
-  'TRACTION',
-  'FINANCIALS',
-  'LANDSCAPE',
-  'RISKS',
-  'SIGNALS',
-];
+// One intent's questions (hiring a vendor), as the diagram's example.
+const ROWS = ['IDENTITY', 'DELIVERY', 'REPUTATION', 'LEGAL', 'FINANCIAL'];
 
+// Every question any intent can ask.
 const SECTION_NAMES = [
-  'What They Do',
-  'Leadership',
-  'Traction & Funding',
-  'Financials & Stock',
-  'Competitive Landscape',
-  'Risks & Red Flags',
+  'Identity & Legitimacy',
+  'Payment Behaviour',
+  'Delivery Track Record',
+  'Ownership & Leadership',
+  'Track Record with Partners',
+  'Recruiting Legitimacy',
+  'Life as an Employee',
+  'Legal & Regulatory',
+  'Financial Health',
+  'Reputation & Complaints',
   'Recent Developments',
 ];
+
+// Doc lines the diagram strikes during cross-examination.
+const STRUCK_LINES = [1, 4];
 
 export default function Landing({ onStart, onSample }) {
   return (
@@ -65,10 +66,10 @@ export default function Landing({ onStart, onSample }) {
 /* ─────────────────────── § 01 The problem ─────────────────────── */
 
 const REDACTED = [
-  'You asked about a company and got a smooth paragraph.',
-  'No sources. Or a link that does not say what the summary says.',
-  'Numbers from three years ago, written in the present tense.',
-  'You cannot check any of it without redoing the work yourself.',
+  'You looked up a company and every sentence came with a source.',
+  'Half the sources were about a different company with the same name.',
+  'Scammers impersonating them became a verdict that they are the scam.',
+  'Nothing on the page tells you which claims those are.',
 ];
 
 function Problem() {
@@ -79,11 +80,12 @@ function Problem() {
         <SecHead sig="§ 01" title="The problem" />
         <div className="prob-grid">
           <div>
-            <h2 className="ldisp l-lg lrise">A fluent answer hides its gaps.</h2>
+            <h2 className="ldisp l-lg lrise">A citation is not a check.</h2>
             <p className="lprose lrise" style={{ '--d': '0.14s' }}>
-              Ask a general chatbot about a company and you get a confident paragraph. Nothing in it
-              tells you which claims were checked, which source each one came from, or what the model
-              never found. The prose reads exactly the same either way.
+              An AI research tool can cite a source for every sentence and still be wrong: the page is
+              about a crypto exchange that shares the name, or it says something narrower than the claim
+              built on it. Before you sign a contract, pay a vendor or accept an offer, that difference is
+              the whole job.
             </p>
           </div>
 
@@ -94,7 +96,7 @@ function Problem() {
               </p>
             ))}
             <p className="rline-last lrise" style={{ '--d': '0.72s' }}>
-              Recon was built for that fourth line.
+              Every line above happened in testing. Recon now cross-examines every claim.
             </p>
           </div>
         </div>
@@ -110,7 +112,7 @@ function useDiagramGeometry() {
   return useMemo(() => {
     const TARGET = { x: 66, y: 230 };
     const rows = ROWS.map((label, i) => {
-      const y = 52 + i * 59;
+      const y = 70 + i * 80;
       return {
         label,
         y,
@@ -139,6 +141,7 @@ function Method() {
   const edgeOutRefs = useRef([]);
   const docRef = useRef(null);
   const docLineRefs = useRef([]);
+  const strikeRefs = useRef([]);
   const stampRef = useRef(null);
   const stampNumRef = useRef(null);
   const progRef = useRef(null);
@@ -179,7 +182,12 @@ function Method() {
 
       draw(edgeOutRefs, s2);
       if (docRef.current) docRef.current.style.opacity = String(Math.min(1, s2 * 2));
-      show(docLineRefs, s2);
+      show(docLineRefs, seg(s2, 0, 0.55));
+      // the drafts land first, then the judge strikes two of them
+      const strike = seg(s2, 0.6, 1);
+      for (const el of strikeRefs.current) {
+        if (el) el.style.transform = `scaleX(${strike})`;
+      }
 
       if (stampRef.current) {
         const e = s3 < 0.6 ? s3 / 0.6 : 1;
@@ -188,7 +196,7 @@ function Method() {
         stampRef.current.style.transform = `rotate(-5deg) scale(${overshoot})`;
       }
       if (stampNumRef.current) {
-        stampNumRef.current.textContent = String(Math.round(lerp(0, 82, s3)));
+        stampNumRef.current.textContent = String(Math.round(lerp(0, 67, s3)));
       }
 
       if (progRef.current) progRef.current.style.transform = `scaleX(${p})`;
@@ -339,6 +347,19 @@ function Method() {
                       r="3"
                       className="dfill-accent"
                     />
+                    {STRUCK_LINES.includes(k) && (
+                      <rect
+                        ref={(el) => {
+                          strikeRefs.current[STRUCK_LINES.indexOf(k)] = el;
+                        }}
+                        x={doc.x + 14}
+                        y={doc.y + 30 + k * 22}
+                        width="128"
+                        height="3"
+                        className="dfill-red"
+                        style={{ transform: 'scaleX(0)', transformOrigin: `${doc.x + 14}px 0px` }}
+                      />
+                    )}
                   </g>
                 ))}
                 <text x={doc.x + doc.w / 2} y={doc.y + doc.h + 26} textAnchor="middle" className="dlab dlab-hi">
@@ -364,7 +385,7 @@ function Method() {
                   textAnchor="middle"
                   className="dlab dlab-stamp"
                 >
-                  ASSESSED
+                  PROCEED
                 </text>
                 <text
                   x={doc.x + doc.w - 9}
@@ -406,18 +427,18 @@ function Method() {
 const EVIDENCE = [
   {
     n: '01',
-    head: 'Numbered exhibits',
-    body: 'Every claim carries superscript exhibit numbers. Each one links straight to the source URL and shows its domain, so you can check a single sentence without re-reading the file.',
+    head: 'Cross-examined, not just cited',
+    body: 'Nemotron Ultra re-reads the page behind every claim. Claims the page does not support, or that belong to a different organisation, are struck in front of you, with the reason written underneath.',
   },
   {
     n: '02',
-    head: 'Confidence, stamped',
-    body: 'The verdict gets a score from 0 to 100 and a tier of high, moderate or low, set by how well the exhibits corroborate one another rather than by how fluent the answer reads.',
+    head: 'A decision, not a summary',
+    body: 'The file ends in proceed, caution or stop for the thing you are about to do, the red flags behind it, and the questions to ask them before you commit.',
   },
   {
     n: '03',
-    head: 'You watch it work',
-    body: 'Sections stream in as the agent files them, behind redaction bars until they resolve. Nothing appears fully formed, so you can see what was found and in what order.',
+    head: 'Confidence you can audit',
+    body: 'The score is computed from how many claims held, how many questions have evidence, and how many independent sites stand behind them. The model never grades itself.',
   },
 ];
 
@@ -428,10 +449,10 @@ function Evidence() {
       <div className="lwrap">
         <SecHead sig="§ 03" title="Evidence" />
         <div className="ev-intro">
-          <h2 className="ldisp l-lg lrise">Every claim keeps its receipt.</h2>
+          <h2 className="ldisp l-lg lrise">Every claim stands trial.</h2>
           <p className="lprose lrise" style={{ '--d': '0.12s' }}>
-            A dossier is only worth the trail behind it. Recon files each finding with the exhibits
-            that support it, then scores the whole thing on how well those exhibits agree.
+            A check is only worth the trail behind it. Recon files each finding with its exhibits, has a
+            second, larger model rule on it against those exhibits, and decides only from what survives.
           </p>
         </div>
 
@@ -481,10 +502,11 @@ function Close({ onStart, onSample }) {
       <div className="lwrap">
         <div className="rule-draw" />
         <h2 className="ldisp l-xl lrise" style={{ '--d': '0.1s' }}>
-          Name a target.
+          Name the other party.
         </h2>
         <p className="lprose lrise" style={{ '--d': '0.22s' }}>
-          A company, a product, or a ticker. The file comes back cited, scored, and yours to check.
+          A client, a vendor, a partner or an employer. The file comes back cross-examined, decided, and yours
+          to check.
         </p>
         <div className="lcta lrise" style={{ '--d': '0.3s' }}>
           <button type="button" className="lbtn lbtn-solid" onClick={onStart}>

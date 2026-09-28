@@ -3,7 +3,7 @@ import express from 'express';
 import fs from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
-import { hasKeys } from './providers.js';
+import { hasKeys, newMeter, withMeter } from './providers.js';
 import { runResearch } from './agent.js';
 import { runDemo } from './demo.js';
 
@@ -26,7 +26,7 @@ app.get('/api/health', (_req, res) => {
 });
 
 app.post('/api/research', async (req, res) => {
-  const { query, demo } = req.body || {};
+  const { query, demo, intent } = req.body || {};
 
   res.setHeader('Content-Type', 'text/event-stream');
   res.setHeader('Cache-Control', 'no-cache, no-transform');
@@ -39,15 +39,16 @@ app.post('/api/research', async (req, res) => {
   };
 
   const keys = hasKeys();
-  const useDemo = Boolean(demo) || !keys.groq || !keys.tavily;
+  const useDemo = Boolean(demo) || !keys.nebius || !keys.tavily;
 
   try {
     if (useDemo) {
-      emit('mode', { demo: true, reason: keys.groq && keys.tavily ? 'requested' : 'missing-keys' });
+      emit('mode', { demo: true, reason: keys.nebius && keys.tavily ? 'requested' : 'missing-keys' });
       await runDemo(query, emit);
     } else {
       emit('mode', { demo: false });
-      await runResearch(query || '', emit);
+      const meter = newMeter();
+      await withMeter(meter, () => runResearch(query || '', emit, { intent, meter }));
     }
   } catch (e) {
     emit('error', { message: e.message || String(e) });
@@ -69,5 +70,5 @@ if (fs.existsSync(distDir)) {
 const PORT = process.env.PORT || 8787;
 app.listen(PORT, () => {
   const k = hasKeys();
-  console.log(`[recon] api on http://localhost:${PORT}  (groq:${k.groq ? 'on' : 'off'} tavily:${k.tavily ? 'on' : 'off'})`);
+  console.log(`[recon] api on http://localhost:${PORT}  (nebius:${k.nebius ? 'on' : 'off'} tavily:${k.tavily ? 'on' : 'off'})`);
 });

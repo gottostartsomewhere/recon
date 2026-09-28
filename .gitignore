@@ -8,3 +8,4 @@ dist/
 # local agent/skill tooling — not part of the app
 .agents/
 .claude/
+runs/

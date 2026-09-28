@@ -373,7 +373,7 @@ function Report({ entity, state, running, sourceMap, query, setQuery, onRun, onR
       {state.error && <div className="notice err">Transmission error — {state.error}</div>}
       {state.demo && (
         <div className="notice">
-          Sample file — a scripted demonstration. Add free Groq + Tavily keys to <code>.env</code> for live reconnaissance on any target.
+          Sample file — a scripted demonstration. Add Nebius Token Factory + Tavily keys to <code>.env</code> for live reconnaissance on any target.
         </div>
       )}
 

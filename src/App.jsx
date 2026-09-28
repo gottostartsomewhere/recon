@@ -49,6 +49,7 @@ const initialState = () => ({
   phase: 'idle',
   statusLabel: '',
   demo: null,
+  demoReason: null,
   logs: [],
   plan: null,
   identity: null,
@@ -75,7 +76,7 @@ export default function App() {
     setS((prev) => {
       switch (type) {
         case 'mode':
-          return { ...prev, demo: !!data.demo };
+          return { ...prev, demo: !!data.demo, demoReason: data.reason || null };
         case 'status':
           return {
             ...prev,
@@ -429,13 +430,8 @@ function Report({ entity, state, running, sourceMap, query, setQuery, onRun, onR
         )}
       </div>
 
-      {state.error && <div className="notice err">Transmission error — {state.error}</div>}
-      {state.demo && (
-        <div className="notice">
-          Sample file — a recorded live run, replayed. Add Nebius Token Factory + Tavily keys to <code>.env</code> to
-          check any party.
-        </div>
-      )}
+      {state.error && <div className="notice err">Transmission error: {state.error}</div>}
+      {state.demo && <SampleNotice reason={state.demoReason} />}
 
       <FileHead entity={entity} plan={state.plan} identity={state.identity} kept={kept.length} setAside={setAside.length} done={done} />
       <Vitals vitals={state.vitals} identity={state.identity} />
@@ -503,6 +499,29 @@ function Report({ entity, state, running, sourceMap, query, setQuery, onRun, onR
       )}
     </main>
   );
+}
+
+// Why a sample is showing instead of a live check.
+function SampleNotice({ reason }) {
+  if (reason === 'daily-cap' || reason === 'ip-cap') {
+    return (
+      <div className="notice">
+        {reason === 'daily-cap'
+          ? "Today's live checks are used up, since each one runs on paid Nemotron inference."
+          : "You've used this connection's live checks for today, since each one runs on paid Nemotron inference."}{' '}
+        This is a recorded live check instead. The quota resets at 00:00 UTC.
+      </div>
+    );
+  }
+  if (reason === 'missing-keys') {
+    return (
+      <div className="notice">
+        Sample file: a recorded live check, replayed. Add Nebius Token Factory and Tavily keys to <code>.env</code> to
+        check any party.
+      </div>
+    );
+  }
+  return <div className="notice">Sample file: a recorded live check, replayed. Name any party above to run a live one.</div>;
 }
 
 function FileHead({ entity, plan, identity, kept, setAside, done }) {
@@ -573,7 +592,7 @@ function Assessment({ verdict, active, sourceMap }) {
     return (
       <div className="assessment">
         <span className="lbl">Decision</span>
-        <div className="assess-pending">Awaiting cross-examination — a decision is stamped when every claim has been ruled on.</div>
+        <div className="assess-pending">Awaiting cross-examination. A decision is stamped once every claim has been ruled on.</div>
         {active && (
           <div className="stamp pending">
             <div className="stamp-top">ASSESSED</div>

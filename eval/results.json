@@ -1,0 +1,1899 @@
+{
+  "ranAt": "2026-09-28T10:56:17.086Z",
+  "totals": {
+    "checks": 20,
+    "completed": 20,
+    "claims": 431,
+    "held": 247,
+    "corrected": 151,
+    "unsupported": 23,
+    "uncited": 1,
+    "wrongEntity": 9,
+    "sources": 837,
+    "setAside": 137,
+    "medianSeconds": 61.55,
+    "medianUsd": 0.060643709999999997,
+    "totalUsd": 1.19916802,
+    "medianTavilyCredits": 9.5,
+    "decisions": {
+      "proceed": 4,
+      "caution": 13,
+      "stop": 3
+    },
+    "struck": 33
+  },
+  "results": [
+    {
+      "name": "Byju's",
+      "intent": "client",
+      "note": "known-bad: payment defaults and insolvency proceedings",
+      "resolvedAs": "Byju's",
+      "lookalikes": [],
+      "error": null,
+      "seconds": 71.6,
+      "usd": 0.07072513999999999,
+      "tavilyCredits": 10,
+      "llmCalls": {
+        "super": 6,
+        "nano": 6,
+        "ultra": 6
+      },
+      "tavilyRequests": 10,
+      "sources": 43,
+      "setAside": 6,
+      "claims": 24,
+      "held": 14,
+      "corrected": 9,
+      "unsupported": 1,
+      "uncited": 0,
+      "wrongEntity": 0,
+      "sectionsCovered": 5,
+      "sectionsTotal": 5,
+      "decision": "stop",
+      "confidence": 77,
+      "redFlags": [
+        "U.S. court entered a $1 billion default judgment against founder Byju Raveendran for fraudulent transfer of Byju's Alpha funds, awarding $533M damages plus a $10,000-per-day contempt fine.",
+        "Lenders filed a U.S. lawsuit in May 2023 accusing Byju's of defaulting on payments and breaching loan terms, and India's Supreme Court revived insolvency proceedings over the same $1B debt.",
+        "Byju's delayed audited financial statements for months and laid off ~4,500 employees (one-third of India workforce) amid FY22 losses of Rs 2,253 crore on Rs 3,569 crore revenue.",
+        "Valuation collapsed from $22B (2022) to ~$1B (early 2024), a 95% decline, with the founder acknowledging missteps publicly."
+      ],
+      "struck": [
+        {
+          "section": "Financial Health",
+          "ruling": "unsupported",
+          "claim": "Byju's reported over 150 million registered students as of April 2023, though its unaudited FY22 revenue was significantly lower than earlier claimed Rs 10,000 crore.",
+          "reason": "Source 18 shows the unaudited FY22 revenue claim was Rs 10,000 crore, while audited revenue is Rs 3,569 crore; the claim incorrectly states unaudited revenue was lower than the earlier claimed Rs 10,000 crore."
+        }
+      ],
+      "correctedExamples": [
+        {
+          "section": "Identity & Legitimacy",
+          "filed": "BYJU'S was incorporated as Think and Learn Private Limited and is registered under the NAICS code 6114 for business schools and computer and management training, with a large employee base reported in filings.",
+          "corrected": "BYJU'S is the flagship brand of Think and Learn Private Limited, which is classified under NAICS code 6114 for business schools and computer and management training, and reports a large employee base of 10,000+.",
+          "reason": "Source 2 identifies Think and Learn Pvt. Ltd as parent company, not that BYJU'S was incorporated as that entity; NAICS code and employee count from Source 1 are third-party data, not official filings."
+        },
+        {
+          "section": "Identity & Legitimacy",
+          "filed": "Despite its former $22 billion valuation peak in 2022, the company's current valuation is effectively zero following financial missteps and investor withdrawals, as acknowledged by founder Byju Raveendran in October 2023.",
+          "corrected": "Despite its former $22 billion valuation peak in 2022, the company's valuation was reported to have effectively dropped to zero by October 2024, with founder Byju Raveendran acknowledging missteps in a press conference.",
+          "reason": "Source 5 dates the zero valuation to October 2024, not October 2023; investor withdrawals are not explicitly stated in cited sources."
+        },
+        {
+          "section": "Identity & Legitimacy",
+          "filed": "The official website byjus.com and registered address are publicly documented, but recent operational challenges including mass layoffs and regulatory scrutiny have raised concerns about ongoing viability.",
+          "corrected": "The official website byjus.com and registered address are publicly documented; however, sources indicate financial losses and business troubles, though mass layoffs and regulatory scrutiny are not explicitly documented in the cited sources.",
+          "reason": "Sources 8 and 11 document the website, address, and financial troubles, but do not mention mass layoffs or regulatory scrutiny."
+        },
+        {
+          "section": "Payment Behaviour",
+          "filed": "Freelancers reported working with Byju's under part‑time arrangements with expected 12 hours per week, though payment details were not specified",
+          "corrected": "A Facebook post advertised a freelance part-time role with Byju's expecting 12 hours per week, though payment details were not specified.",
+          "reason": "Source 41 is a Facebook post appearing to advertise a freelance part-time role with 12 hours/week, not a report from freelancers about working arrangements."
+        },
+        {
+          "section": "Payment Behaviour",
+          "filed": "A Facebook post described a situation where a freelancer was asked to wait for payment while working elsewhere, reflecting possible payment delays",
+          "corrected": "A Facebook comment indicated a freelancer was waiting for their paycheck while working elsewhere, hinting at possible payment delays.",
+          "reason": "Source 43 is a Facebook comment where a freelancer says they don't mind waiting for their paycheck while working elsewhere, not a description of being asked to wait."
+        },
+        {
+          "section": "Financial Health",
+          "filed": "Byju's valuation fell from $22B in 2020 to about $1B by late 2023, representing a 95% decline from its peak.",
+          "corrected": "Byju's valuation fell from $22B in 2020 to $3B by November 2023, and further to about $1B by early 2024, representing a 95% decline from its peak.",
+          "reason": "Source 20 says valuation fell to $3B by November 2023 from $22B in 2020, and as of publication (early 2024) it is $1B, not $1B by late 2023."
+        },
+        {
+          "section": "Reputation & Complaints",
+          "filed": "Reddit users describe Byju's sales tactics as \"predatory\" and note that the company collapsed amid widespread complaints of financial loss",
+          "corrected": "A Reddit user described Byju's sales tactics as 'predatory' and noted that the company collapsed and the founder got a jail sentence.",
+          "reason": "Source 24 shows a single Reddit user calling sales tactics 'predatory' and noting the company collapsed, but does not mention 'widespread complaints of financial loss' or plural 'users'."
+        },
+        {
+          "section": "Reputation & Complaints",
+          "filed": "Former employees indicate that up to 20% of new users request refunds and that staff threatened legal action when customers tried to back out of subscriptions",
+          "corrected": "A former senior executive indicated that up to 20% of new users request refunds, and a customer reported that staff threatened legal action when he tried to back out of a subscription.",
+          "reason": "Source 25 attributes the 20% refund figure to a former senior executive, but the legal threat is reported by a customer (Jeevan Jena), not a former employee."
+        },
+        {
+          "section": "Reputation & Complaints",
+          "filed": "Parents have been persuaded to purchase the Byju's Learning Station tablet for around INR 2 lakh, which functioned only briefly before becoming unusable",
+          "corrected": "A parent reported being persuaded to purchase the Byju's Learning Station tablet for around INR 2 lakh, stating it functioned only for a limited time.",
+          "reason": "Source 26 is a single parent's truncated statement ('functioned only for'), but the claim generalizes to 'Parents' and adds 'briefly before becoming unusable' which is not in the source."
+        }
+      ]
+    },
+    {
+      "name": "Builder.ai",
+      "intent": "client",
+      "note": "known-bad: collapsed into insolvency in 2025",
+      "resolvedAs": "Builder.ai",
+      "lookalikes": [
+        "Anything (AI app and website builder platform)",
+        "Builder.io (Collaborative visual CMS and design-to-code platform used by enterprises)"
+      ],
+      "error": null,
+      "seconds": 51.4,
+      "usd": 0.03825016,
+      "tavilyCredits": 12,
+      "llmCalls": {
+        "super": 6,
+        "nano": 4,
+        "ultra": 4
+      },
+      "tavilyRequests": 13,
+      "sources": 53,
+      "setAside": 36,
+      "claims": 13,
+      "held": 7,
+      "corrected": 4,
+      "unsupported": 2,
+      "uncited": 0,
+      "wrongEntity": 0,
+      "sectionsCovered": 3,
+      "sectionsTotal": 5,
+      "decision": "stop",
+      "confidence": 53,
+      "redFlags": [
+        "Builder.ai entered insolvency proceedings in 2025 following years of allegations that it exaggerated AI capabilities and misreported financials.",
+        "Audits showed the company claimed $220M in 2024 revenue but actual revenue was closer to $55M, a massive overstatement of sales.",
+        "Financial reporting exhibited a pattern of exaggeration with projected revenue far exceeding actual sales, contributing to investor defaults and collapse.",
+        "Former employees and a Medium article allege the company relied on human contractors rather than true AI automation, undermining its core value proposition.",
+        "Trustpilot reviews include 'complete scam' complaints citing delayed delivery and unmet specifications, and former staff describe a toxic culture with poor management and accountability."
+      ],
+      "struck": [
+        {
+          "section": "Identity & Legitimacy",
+          "ruling": "unsupported",
+          "claim": "Builder.ai was incorporated as Engineer.AI Global Limited on 5 October 2017 with company number 10998363 and registered office at 15 Westferry Circus, Canary Wharf, London, United Kingdom (E14 4HD) (source: 32)",
+          "reason": "Source 32 only shows Engineer.AI Global Limited incorporation details; it does not mention Builder.ai or link the two entities."
+        },
+        {
+          "section": "Identity & Legitimacy",
+          "ruling": "unsupported",
+          "claim": "The company was founded by Sachin Dev Duggal (and Saurabh Dhoot per FAQ) and originally operated under the name Engineer.ai Corporation before rebranding to Builder.ai in 2019 (source: 21)",
+          "reason": "Source 21 states Builder.ai was started in 2016 by Duggal and Dhoot but does not mention Engineer.ai Corporation or a 2019 rebranding."
+        }
+      ],
+      "correctedExamples": [
+        {
+          "section": "Reputation & Complaints",
+          "filed": "Builder.ai was rated \"Average\" with 3/5 on Trustpilot, where users reported a \"complete scam\" involving delayed delivery, unmet specifications, and non-refundable payments for a marketplace website project",
+          "corrected": "Builder.ai was rated 'Average' with 3/5 on Trustpilot, where users reported a 'complete scam' involving delayed delivery and unmet specifications for a marketplace website project.",
+          "reason": "Source 15 confirms the 3/5 Trustpilot rating and reviews describing a 'complete scam' with delayed delivery and unmet specifications, but does not mention 'non-refundable payments'."
+        },
+        {
+          "section": "Reputation & Complaints",
+          "filed": "Former employees described a toxic atmosphere with poor management, lack of transparency, and accountability issues, contributing to an employee rating of 2.7 out of 5 stars",
+          "corrected": "Former employees described a toxic atmosphere with poor management, lack of transparency, and accountability issues.",
+          "reason": "Source 37 supports the description of a toxic atmosphere with poor management, lack of transparency, and accountability, but does not provide an employee rating of 2.7 out of 5 stars."
+        },
+        {
+          "section": "Reputation & Complaints",
+          "filed": "Builder.ai raised $200 million while allegedly exaggerating AI capabilities and misreporting financials, leading to insolvency proceedings in 2025",
+          "corrected": "Builder.ai allegedly exaggerated its AI capabilities and misreported its financials, leading to insolvency proceedings in 2025; a Medium article claimed the company spent $200 million.",
+          "reason": "Source 1 confirms insolvency proceedings in 2025 and allegations of exaggerated AI capabilities and misreported financials, but does not mention $200 million raised; Source 16 is a Medium opinion piece claiming $200 million spent, not a verified funding figure."
+        },
+        {
+          "section": "Reputation & Complaints",
+          "filed": "Multiple former engineers confirmed that the company relied on human contractors rather than AI automation, with rampant discrepancies between recorded developer hours and actual work performed",
+          "corrected": "A former associate product director reported rampant discrepancies between recorded developer hours and actual work performed, and a Medium article alleged the company relied on human contractors rather than AI automation.",
+          "reason": "Source 17 reports that a former associate product director (Yash Mittal) described rampant fraud in recorded developer hours, and the author spoke with three disappointed engineers, but does not state that multiple former engineers confirmed reliance on human contractors; Source 16 is an opinion piece alleging human contractors, not engineer confirmation."
+        }
+      ]
+    },
+    {
+      "name": "WeWork",
+      "intent": "client",
+      "note": "",
+      "resolvedAs": "WeWork",
+      "lookalikes": [],
+      "error": null,
+      "seconds": 69.4,
+      "usd": 0.05975605999999999,
+      "tavilyCredits": 11,
+      "llmCalls": {
+        "super": 5,
+        "nano": 6,
+        "ultra": 6
+      },
+      "tavilyRequests": 14,
+      "sources": 51,
+      "setAside": 0,
+      "claims": 24,
+      "held": 9,
+      "corrected": 7,
+      "unsupported": 3,
+      "uncited": 0,
+      "wrongEntity": 5,
+      "sectionsCovered": 4,
+      "sectionsTotal": 5,
+      "decision": "caution",
+      "confidence": 46,
+      "redFlags": [
+        "WeWork reported a $527 million net loss in Q4 2022 with adjusted EBITDA of –$26 million, showing continued negative cash generation despite revenue growth.",
+        "The company issued $250 million of senior secured notes to a SoftBank affiliate in January 2023, indicating reliance on related‑party funding to sustain operations.",
+        "Ongoing litigation with SoftBank over alleged breaches of fiduciary duty and a $3 billion tender offer creates governance uncertainty that could affect financial stability."
+      ],
+      "struck": [
+        {
+          "section": "Payment Behaviour",
+          "ruling": "wrong_entity",
+          "claim": "54% of freelancers have experienced delayed payments from clients, with 20% reporting they could not cover basic living costs such as rent and bills as a direct result of late payments [27]",
+          "reason": "The cited source is an Instagram post from IPSE about freelancers generally, not about WeWork's payment behavior."
+        },
+        {
+          "section": "Payment Behaviour",
+          "ruling": "wrong_entity",
+          "claim": "Late payments can lead to unpaid bills, missed rent, and financial risk for self‑employed individuals after work has been delivered [27]",
+          "reason": "The cited source discusses late payments' impact on self-employed individuals generally, not WeWork specifically."
+        },
+        {
+          "section": "Payment Behaviour",
+          "ruling": "wrong_entity",
+          "claim": "A 2023 survey found that 55% of B2B invoiced sales in the U.S. are overdue, and 86% of businesses report up to 30% of monthly invoiced sales are overdue, indicating widespread payment delays [41]",
+          "reason": "The cited source is a general B2B payment delay statistics compilation from The Kaplan Group, not about WeWork."
+        },
+        {
+          "section": "Payment Behaviour",
+          "ruling": "wrong_entity",
+          "claim": "Late payments affect cash flow, confidence, and stability for freelancers and self‑employed professionals [27]",
+          "reason": "The cited source describes effects of late payments on freelancers broadly, not WeWork's payment practices."
+        },
+        {
+          "section": "Payment Behaviour",
+          "ruling": "wrong_entity",
+          "claim": "Late payment disputes and unpaid invoices are common in B2B relationships, with many businesses experiencing overdue invoices that can reach up to 30% of monthly sales [41]",
+          "reason": "The cited source provides general B2B payment statistics, not data specific to WeWork."
+        },
+        {
+          "section": "Legal & Regulatory",
+          "ruling": "unsupported",
+          "claim": "On November 4, 2023, former WeWork employee Natalie Sojka filed a lawsuit in San Francisco County Superior Court alleging that Adam Neumann, SoftBank, and the WeWork board breached fiduciary duties to minority shareholders by arranging a self-interested transaction, seeking class-action status.",
+          "reason": "Source 23 indicates the lawsuit was filed on November 4, 2019 (article date), not 2023."
+        },
+        {
+          "section": "Reputation & Complaints",
+          "ruling": "unsupported",
+          "claim": "Reddit discussions indicate mixed experiences among current and former WeWork users, though specific details are sparse and not directly attributable to formal complaint channels [13]",
+          "reason": "The cited Reddit source provides only a thread title with no content, so no experiences are indicated."
+        },
+        {
+          "section": "Reputation & Complaints",
+          "ruling": "unsupported",
+          "claim": "WeWork’s financial history, including a failed 2019 IPO, massive losses, and subsequent bankruptcy restructuring, underscores governance and operational risks that have fueled negative public and investor sentiment [14]",
+          "reason": "The cited article snippet discusses governance lessons and an overambitious model but does not mention a failed 2019 IPO, massive losses, or bankruptcy restructuring."
+        }
+      ],
+      "correctedExamples": [
+        {
+          "section": "Identity & Legitimacy",
+          "filed": "The company was incorporated as WeWork Companies LLC and maintains a corporate presence in multiple jurisdictions, including China (WeWork Commercial Service (Shanghai) Co., Ltd.) and Japan (WWJ Corp.), with registration and operational details cited in official filings and location directories.",
+          "corrected": "WeWork maintains a corporate presence in multiple jurisdictions, including China (WeWork Commercial Service (Shanghai) Co., Ltd.) and Japan (WWJ Corp.), with registration and operational details cited in official filings and location directories.",
+          "reason": "Cited sources 1, 3, 6 confirm Chinese and Japanese subsidiaries with registration details, but do not state the parent was incorporated as WeWork Companies LLC."
+        },
+        {
+          "section": "Identity & Legitimacy",
+          "filed": "WeWork has been active in Asia since at least 2015, with a significant presence in Shanghai, Tokyo, Hong Kong, and Singapore, and reported over 90% occupancy rates in key Hong Kong locations by 2026, reflecting sustained operational scale.",
+          "corrected": "WeWork reported over 90% occupancy rates in key Hong Kong locations by 2026, with presence in Shanghai and Hong Kong.",
+          "reason": "Source 6 confirms >90% occupancy in Hong Kong by 2026 and presence in Shanghai and Hong Kong, but does not support activity since 2015 or significant presence in Tokyo and Singapore."
+        },
+        {
+          "section": "Financial Health",
+          "filed": "In February 2023, WeWork announced that fourth‑quarter 2022 revenue rose 18% YoY to $848 million, yet it posted a $527 million net loss that included about $348 million of non‑cash expenses.",
+          "corrected": "WeWork's fourth‑quarter 2022 revenue rose 18% YoY to $848 million, yet it posted a $527 million net loss that included about $348 million of non‑cash expenses.",
+          "reason": "Source 32 provides the Q4 2022 financial figures but does not mention a February 2023 announcement."
+        },
+        {
+          "section": "Financial Health",
+          "filed": "WeWork secured $250 million of senior secured notes in January 2023, reflecting ongoing efforts to restructure debt and improve liquidity amid persistent losses.",
+          "corrected": "WeWork issued $250 million of senior secured notes in January 2023 to an affiliate of SoftBank Group Corp.",
+          "reason": "Source 32 confirms the $250 million senior secured notes issuance in January 2023 but does not state that this reflects ongoing efforts to restructure debt and improve liquidity amid persistent losses; that is an inference."
+        },
+        {
+          "section": "Reputation & Complaints",
+          "filed": "WeWork holds a 1.9/5 rating on Trustpilot based on 41 reviews, with multiple users describing the booking system as unreliable and citing financial losses from mistaken same‑day reservations [10]",
+          "corrected": "WeWork holds a 1.9/5 rating on Trustpilot; at least one user reported financial loss from a mistaken same-day reservation due to booking system constraints.",
+          "reason": "Source shows 1.9/5 rating but does not mention 41 reviews; only one review describes booking system issue, not multiple users."
+        },
+        {
+          "section": "Reputation & Complaints",
+          "filed": "The Better Business Bureau lists numerous complaints about WeWork Inc. related to persistent noise issues and unresolved service problems, indicating a pattern of customer dissatisfaction [11]",
+          "corrected": "The Better Business Bureau lists complaints about WeWork Inc. referencing persistent noise issues, with a pattern noted across public complaint platforms.",
+          "reason": "Source mentions persistent noise and a pattern matching multiple public complaints, but does not quantify complaints as numerous or explicitly cite unresolved service problems."
+        },
+        {
+          "section": "Reputation & Complaints",
+          "filed": "Online commentary, including a LinkedIn post describing WeWork as a \"dirty scam\" from the start and broader criticism of its management, reflects widespread negative perception among former employees and observers [12]",
+          "corrected": "A LinkedIn post describes WeWork as a 'dirty scam' from the start, with commenters offering both critical and sympathetic perspectives on its management.",
+          "reason": "Source shows a single LinkedIn post calling WeWork a 'dirty scam' and a few comments with mixed views, insufficient to support 'widespread negative perception among former employees and observers.'"
+        }
+      ]
+    },
+    {
+      "name": "Paytm",
+      "intent": "client",
+      "note": "",
+      "resolvedAs": "Paytm",
+      "lookalikes": [],
+      "error": null,
+      "seconds": 59.6,
+      "usd": 0.06145684,
+      "tavilyCredits": 12,
+      "llmCalls": {
+        "super": 6,
+        "nano": 6,
+        "ultra": 6
+      },
+      "tavilyRequests": 12,
+      "sources": 56,
+      "setAside": 11,
+      "claims": 23,
+      "held": 15,
+      "corrected": 7,
+      "unsupported": 1,
+      "uncited": 0,
+      "wrongEntity": 0,
+      "sectionsCovered": 5,
+      "sectionsTotal": 5,
+      "decision": "caution",
+      "confidence": 80,
+      "redFlags": [
+        "RBI cancelled Paytm Payments Bank's licence and ordered winding‑up proceedings after repeated non‑compliance.",
+        "RBI fined Paytm Payments Bank ₹5.39 crore for KYC/AML lapses and FIU imposed a ₹54.9 million penalty for reporting violations.",
+        "Trustpilot rates Paytm 1.4/5 with widespread allegations of fraud, lost funds and non‑existent customer support.",
+        "A Reddit user alleges Paytm Money is holding ~₹45 lakhs of their funds without assistance.",
+        "Group reported a $170 million net loss in FY2024 and announced job cuts amid the regulatory clampdown."
+      ],
+      "struck": [
+        {
+          "section": "Financial Health",
+          "ruling": "unsupported",
+          "claim": "In FY 2023, payment‑service revenue grew 44% to ₹4,930 crore, accounting for the majority of total revenue, while the company recorded an impairment charge of $27.2 million on its investments.",
+          "reason": "Source 29 confirms payment-service revenue grew 44% to ₹4,930 crore but does not mention any impairment charge; the $27.2M impairment charge appears in source 27, not in the cited source."
+        }
+      ],
+      "correctedExamples": [
+        {
+          "section": "Identity & Legitimacy",
+          "filed": "Paytm (One97 Communications Limited) is an Indian fintech company incorporated in 2010 and headquartered in Noida, Uttar Pradesh, India, with its registered office at B-121, Sector 5, Noida 201301, India (address confirmed in prospectus.pdf).",
+          "corrected": "Paytm (One97 Communications Limited) is an Indian fintech company founded in 2010 and headquartered in Noida, Uttar Pradesh, India, with its corporate office at B-121, Sector 5, Noida 201301, India (address confirmed in prospectus.pdf).",
+          "reason": "Prospectus.pdf lists 'Corporate Office' not 'Registered Office'; Wikipedia says 'founded' not 'incorporated'."
+        },
+        {
+          "section": "Identity & Legitimacy",
+          "filed": "The company operates under the legal name One97 Communications Limited and is registered with the Registrar of Companies (RoC) in the National Capital Territory of Delhi and Haryana, with contact details provided in the prospectus.pdf.",
+          "corrected": "The company is registered with the Registrar of Companies (RoC) in the National Capital Territory of Delhi and Haryana, with contact details provided in the prospectus.pdf.",
+          "reason": "Source 9 snippet does not mention the legal name 'One97 Communications Limited', only RoC registration details."
+        },
+        {
+          "section": "Identity & Legitimacy",
+          "filed": "Paytm Payments Bank, a wholly owned subsidiary of One97 Communications, offers savings accounts with no opening charges or minimum balance requirements, as stated on its official website paytm.bank.in.",
+          "corrected": "Paytm Payments Bank offers savings accounts with no opening charges or minimum balance requirements, as stated on its official website paytm.bank.in.",
+          "reason": "Source 6 only describes savings account features; it does not state Paytm Payments Bank is a wholly owned subsidiary of One97 Communications."
+        },
+        {
+          "section": "Identity & Legitimacy",
+          "filed": "Paytm was founded in 2010 by Vijay Shekhar Sharma under One97 Communications, initially focusing on mobile and DTH recharge services before expanding into digital payments and financial services, a fact documented in the Wikipedia entry (en.wikipedia.org).",
+          "corrected": "Paytm was founded in 2010 by Vijay Shekhar Sharma under One97 Communications, as documented in the Wikipedia entry.",
+          "reason": "Source 1 snippet does not mention initial focus on mobile and DTH recharge services."
+        },
+        {
+          "section": "Payment Behaviour",
+          "filed": "The Ministry of Finance clarified that person-to-person transactions will remain free of charge, though fees for merchant payments are expected to persist.",
+          "corrected": "The Ministry of Finance clarified that person-to-person transactions will remain free of charge, while charges will be threshold-based for a limited set of merchant transactions.",
+          "reason": "Source 52 specifies charges will be 'threshold based' for a 'limited set of merchant transactions', not that fees for all merchant payments will persist broadly."
+        },
+        {
+          "section": "Financial Health",
+          "filed": "Paytm reported a net loss of $170 million in FY 2024, up from $213 million the prior year, with revenue declining about 3% to $272.4 million, reflecting widening losses after the RBI clampdown.",
+          "corrected": "Paytm reported a full-year net loss of $170 million in FY2024, compared to $213 million in FY2023, while Q4 FY2024 revenue declined about 3% to $272.4 million.",
+          "reason": "Source 27 reports full-year FY2024 net loss of $170M vs $213M in FY2023 (a decrease, not increase) and a 3% revenue decline to $272.4M for Q4 only, not the full year."
+        },
+        {
+          "section": "Legal & Regulatory",
+          "filed": "RBI invoked Section 22(4) of the Banking Regulation Act to revoke the licence effective 24 April 2026, prohibiting any banking activities (Source: [38])",
+          "corrected": "RBI invoked Section 22(4) of the Banking Regulation Act to revoke Paytm Payments Bank's licence.",
+          "reason": "Source [38] mentions RBI invoked Section 22(4) of the Banking Regulation Act to revoke the licence but does not specify the effective date of 24 April 2026."
+        }
+      ]
+    },
+    {
+      "name": "Toptal",
+      "intent": "vendor",
+      "note": "",
+      "resolvedAs": "Toptal",
+      "lookalikes": [],
+      "error": null,
+      "seconds": 63.5,
+      "usd": 0.07062194000000001,
+      "tavilyCredits": 12,
+      "llmCalls": {
+        "super": 6,
+        "nano": 6,
+        "ultra": 6
+      },
+      "tavilyRequests": 11,
+      "sources": 42,
+      "setAside": 1,
+      "claims": 24,
+      "held": 12,
+      "corrected": 11,
+      "unsupported": 1,
+      "uncited": 0,
+      "wrongEntity": 0,
+      "sectionsCovered": 5,
+      "sectionsTotal": 5,
+      "decision": "proceed",
+      "confidence": 73,
+      "redFlags": [
+        "Active federal lawsuit alleging misappropriation of trade secrets (case 1:24-cv-04027) and a separate founder dispute resulting in $2.6M damages indicate ongoing legal exposure.",
+        "Court denied attorney-client privilege for internal Slack communications, suggesting potential governance or documentation weaknesses."
+      ],
+      "struck": [
+        {
+          "section": "Legal & Regulatory",
+          "ruling": "unsupported",
+          "claim": "Toptal sued Bloomberg L.P. in Delaware (C.A. No. N25C-01-266) for misappropriation of trade secrets and unfair competition, with a jury trial decided in July 2025.",
+          "reason": "Source [39] describes a motion to dismiss decided in July 2025, not a jury trial, and does not specify the causes of action as misappropriation of trade secrets and unfair competition."
+        }
+      ],
+      "correctedExamples": [
+        {
+          "section": "Identity & Legitimacy",
+          "filed": "Toptal, LLC is a private company founded in 2010 by Taso Du Val, Breanden Beneschott, and others, with its headquarters in San Francisco, CA (2810 N Church St, San Francisco, CA 19802) and operates a global freelance talent network serving Fortune 500 companies and Silicon Valley startups",
+          "corrected": "Toptal, LLC is a private company founded in 2010 by Taso Du Val and Breanden Beneschott, headquartered in the United States with an office in San Francisco, CA, and operates a global freelance talent network serving clients worldwide.",
+          "reason": "Cited sources do not specify the exact headquarters address (2810 N Church St), list only two founders (not \"and others\"), and do not explicitly state service to Fortune 500 companies and Silicon Valley startups."
+        },
+        {
+          "section": "Identity & Legitimacy",
+          "filed": "The company has grown to employ approximately 1,000 people and maintains a network of over 30,000 vetted freelance professionals worldwide, with a reported valuation of $3.6 billion",
+          "corrected": "The company has grown to employ more than 600 people and maintains a network of over 30,000 vetted freelance professionals worldwide, with a reported valuation of $3.6 billion.",
+          "reason": "Wikipedia states \"more than 600 employees\" not \"approximately 1,000 people\"; the network size and valuation figures are supported."
+        },
+        {
+          "section": "Identity & Legitimacy",
+          "filed": "The company has been recognized by Newsweek as the #1 Most Reliable Professional Services Company in America and ranks among the top freelance platforms with over $5 billion in global payments processed",
+          "corrected": "The company has been recognized by Newsweek as the #1 Most Reliable Professional Services Company in America.",
+          "reason": "Newsweek #1 ranking is supported, but the claim of \"over $5 billion in global payments processed\" does not appear in the cited sources."
+        },
+        {
+          "section": "Identity & Legitimacy",
+          "filed": "Toptal's screening process accepts only a small percentage of applicants, ensuring a curated network of top-tier talent for critical projects in software development, design, finance, and consulting",
+          "corrected": "Toptal's screening process accepts only a small percentage of applicants, ensuring a curated network of top-tier talent for projects in software development, design, marketing, management consulting, product management, and project management.",
+          "reason": "The cited source mentions a rigorous screening process accepting a small percentage of applicants and lists software developers, designers, marketing experts, management consultants, product managers, and project managers, but does not mention finance or explicitly state \"critical projects\"."
+        },
+        {
+          "section": "Delivery Track Record",
+          "filed": "Toptal serves over 35,000 clients and has hired talent for more than 85,000 projects across 140+ countries, serving Fortune 500 enterprises and major startups.",
+          "corrected": "Toptal serves over 35,000 clients and has facilitated over 85,000 talent hires across 140+ countries, serving Fortune 500 enterprises and major startups.",
+          "reason": "Source 13 states 'TALENT HIRED BY CLIENTS 85,000+' which refers to talent hires, not projects."
+        },
+        {
+          "section": "Delivery Track Record",
+          "filed": "Toptal maintains a 4.8/5.0 average rating from 77 customer references, 11 testimonials, and 65 case studies on FeaturedCustomers, with additional verified reviews on Clutch and G2.",
+          "corrected": "Toptal maintains a 4.8/5.0 average rating from 77 customer references, 11 testimonials, and 65 case studies on FeaturedCustomers.",
+          "reason": "Source 12 only covers FeaturedCustomers data; it does not mention Clutch or G2 reviews."
+        },
+        {
+          "section": "Legal & Regulatory",
+          "filed": "Toptal filed a lawsuit in New York (case 1:24-cv-04027) alleging Andela hired at least 30 former Toptal employees and improperly used its trade secrets, with the case removed to federal court in May 2024.",
+          "corrected": "Toptal filed a lawsuit in New York (case 1:24-cv-04027) alleging misappropriation of trade secrets and other claims, with the case removed to federal court in May 2024.",
+          "reason": "Source [29] shows removal to federal court and lists misappropriation of trade secrets among claims, but does not mention the allegation that Andela hired at least 30 former Toptal employees."
+        },
+        {
+          "section": "Legal & Regulatory",
+          "filed": "A 2025 court order denied attorney-client privilege for Toptal's Slack messages and FAFO communications, noting no lawyer was present on the threads and the communications predated litigation by over a year.",
+          "corrected": "A 2025 court order denied attorney-client privilege for Toptal's Slack messages and FAFO communications, noting no lawyer was present on the threads and the Slack messages occurred more than seven months before the initial lawsuit and more than eighteen months before Mechanism Ventures was added as a defendant.",
+          "reason": "Source [31] states Slack messages occurred more than seven months before the initial suit (not over a year) and eighteen months before Mechanism Ventures was added; the claim generalizes inaccurately to \"over a year.\""
+        },
+        {
+          "section": "Financial Health",
+          "filed": "Toptal laid off roughly 100 employees in February 2023 due to falling remote hiring demand, reflecting broader tech sector contraction and elevated global tech layoffs.",
+          "corrected": "Toptal laid off roughly 100 employees in February 2023 due to falling remote hiring demand; the tech sector separately saw elevated layoffs.",
+          "reason": "Source 24 confirms the layoff count and cause; source 25 discusses general tech layoffs but does not link Toptal's layoffs to broader sector contraction."
+        },
+        {
+          "section": "Financial Health",
+          "filed": "Toptal's estimated annual revenue in 2023 was $167 million, with an estimated valuation of $1.2 billion and average contract value of $167K, serving over 6,200 employees and 70,000 contracts signed globally.",
+          "corrected": "Toptal's estimated annual revenue in 2023 was $167 million, with an average contract value of $167K, and approximately 6,200 employees as of 2024.",
+          "reason": "Sources 32 and 33 support 2023 revenue of $167M, average contract value $167K, and ~6.2K employees, but do not support a $1.2B valuation (that figure is a current revenue estimate) nor 70,000 contracts."
+        },
+        {
+          "section": "Financial Health",
+          "filed": "Toptal is a private company operating an exclusive freelance talent network, known also as toptal, LLC, and maintains a fully remote workforce of over $5 billion in global payments volume.",
+          "corrected": "Toptal is a private company operating an exclusive freelance talent network and maintains a fully remote workforce with over $5 billion in global payments volume.",
+          "reason": "Sources 23 and 33 support the freelance network description and $5B global payments, but do not mention 'toptal, LLC' as an alias."
+        }
+      ]
+    },
+    {
+      "name": "Deel",
+      "intent": "vendor",
+      "note": "",
+      "resolvedAs": "Deel",
+      "lookalikes": [],
+      "error": null,
+      "seconds": 59,
+      "usd": 0.059830579999999994,
+      "tavilyCredits": 9,
+      "llmCalls": {
+        "super": 6,
+        "nano": 6,
+        "ultra": 6
+      },
+      "tavilyRequests": 9,
+      "sources": 39,
+      "setAside": 3,
+      "claims": 24,
+      "held": 14,
+      "corrected": 10,
+      "unsupported": 0,
+      "uncited": 0,
+      "wrongEntity": 0,
+      "sectionsCovered": 5,
+      "sectionsTotal": 5,
+      "decision": "caution",
+      "confidence": 79,
+      "redFlags": [
+        "The U.S. Department of Justice opened a criminal investigation in early 2025 into Deel for alleged corporate espionage and RICO Act violations, based on allegations Deel directed a former Rippling employee to conduct over 6,000 unauthorized searches of Rippling's Slack channels and steal trade secrets.",
+        "Deel filed a motion to strike the alleged spy witness in the Rippling lawsuit, while Rippling accused Deel of a 'Hail Mary' effort to suppress evidence amid mounting allegations.",
+        "Community reviews flag permanent establishment risks when using Deel's EOR contracts in jurisdictions where Deel has no legal entity, potentially exposing clients to tax and compliance liabilities."
+      ],
+      "struck": [],
+      "correctedExamples": [
+        {
+          "section": "Identity & Legitimacy",
+          "filed": "Deel, Inc. is a Delaware-incorporated private company founded in 2019 by Alex Bouaziz (CEO), Shuo Wang (CRO) and Dan Westgarth (COO), operating a global payroll and HR platform used by over 40,000 customers across 150+ countries [1]",
+          "corrected": "Deel, Inc. is a Delaware-incorporated private company founded in 2019 by Alex Bouaziz (CEO), Shuo Wang (CRO) and Dan Westgarth (COO), operating a global payroll and HR platform.",
+          "reason": "Source 1 does not mention customer count or country count, only incorporation, founders, and employee/revenue figures."
+        },
+        {
+          "section": "Identity & Legitimacy",
+          "filed": "The company employs approximately 7,500 people worldwide as of 2025 and has raised over $600 million in funding, reaching a valuation of about $1 billion [1]",
+          "corrected": "The company employs approximately 7,500 people worldwide as of 2025 and reported revenue of about $1 billion in 2025.",
+          "reason": "Source 1 states 7,500 employees (2025) and revenue of $1 billion (2025) but does not mention funding raised or valuation."
+        },
+        {
+          "section": "Identity & Legitimacy",
+          "filed": "Deel maintains a corporate presence in San Francisco, California, and markets itself as a globally distributed organization with a physical address listed on its website [2]",
+          "corrected": "Deel maintains a corporate presence in San Francisco, California per its LinkedIn profile.",
+          "reason": "Source 2 shows San Francisco location on LinkedIn but does not confirm a physical address listed on Deel's website or explicit \"globally distributed organization\" marketing claim."
+        },
+        {
+          "section": "Identity & Legitimacy",
+          "filed": "The company processes more than $20 billion in global payroll annually and reports a 90+ Net Promoter Score among enterprise customers [8]",
+          "corrected": "The company processes over $20 billion in global payroll (cumulative) and reports a 90+ Net Promoter Score among enterprise customers.",
+          "reason": "Source 8 states \"$20B+ compliantly processed global payroll\" and \"90+ NPS for enterprise customers\" but does not specify the payroll figure is annual."
+        },
+        {
+          "section": "Delivery Track Record",
+          "filed": "Deel’s contractor and EOR solutions have enabled clients such as PUMA South Africa and Taktile Software to scale globally, with PUMA South Africa hiring 60+ people across 10+ countries and Taktile Software growing from 12 to 60 employees after switching to Deel.",
+          "corrected": "Deel’s contractor and EOR solutions have enabled clients such as Taktile Software to scale globally, with Taktile Software growing from 12 to 60 employees after switching to Deel and hiring 60+ people across 10+ countries.",
+          "reason": "Source 17 mentions Taktile Software growing from 12 to 60 employees and a quote about hiring 60+ people in 10+ countries, but does not mention PUMA South Africa."
+        },
+        {
+          "section": "Delivery Track Record",
+          "filed": "Deel’s customer support is frequently praised for being fast and making clients feel valued, as noted in testimonials from companies like Taktile Software and others using Deel’s EOR and contractor solutions.",
+          "corrected": "Deel’s customer support is praised for being fast and making clients feel valued, as noted in a testimonial from Taktile Software.",
+          "reason": "Source 17 provides only one testimonial (from Taktile Software) praising support as fast and making them feel valued; it does not show frequent praise or multiple companies."
+        },
+        {
+          "section": "Legal & Regulatory",
+          "filed": "Deel allegedly paid a spy, identified as former Rippling employee Keith O’Brien, to conduct over 6,000 unauthorized searches of Rippling’s Slack channels and steal confidential trade secrets, with payments routed through the personal bank account of Deel COO Dan Westgarth’s wife, Alba Basha, via a Revolut account belonging to Lets Deel Ltd [12][15]",
+          "corrected": "Deel allegedly cultivated a spy, identified as former Rippling employee Keith O’Brien, to conduct over 6,000 unauthorized searches of Rippling’s Slack channels and steal confidential trade secrets.",
+          "reason": "Sources [12] and [15] allege espionage and 6,000+ Slack searches but do not mention payments routed through Dan Westgarth's wife's Revolut account or Lets Deel Ltd."
+        },
+        {
+          "section": "Legal & Regulatory",
+          "filed": "Deel attempted to dismiss the lawsuit as 'baseless' and filed motions to strike the spy witness, while Rippling accused Deel of a 'Hail Mary' effort to suppress evidence amid mounting allegations [14]",
+          "corrected": "Deel filed a motion to strike the spy witness in the Rippling lawsuit, while Rippling accused Deel of a 'Hail Mary' effort to suppress evidence amid mounting allegations.",
+          "reason": "Source [14] describes Deel moving to strike the spy witness and Rippling calling it a \"Hail Mary effort,\" but does not mention Deel attempting to dismiss the lawsuit as \"baseless.\""
+        },
+        {
+          "section": "Financial Health",
+          "filed": "Deel reported profitability for three consecutive years and surpassed $1 billion in annual recurring revenue (ARR), achieving a $1.4B+ ARR milestone in 2025.",
+          "corrected": "Deel reported profitability for three consecutive years and surpassed $1 billion in ARR, with reports indicating $1.4B+ ARR (year not specified in cited sources).",
+          "reason": "Source 25 confirms three-year profitability and $1B+ ARR; source 26 mentions $1.4B+ ARR but does not specify the year 2025."
+        },
+        {
+          "section": "Financial Health",
+          "filed": "Deel's revenue model includes a $49 monthly fee per active contractor and $599 per full-time employee, contributing to its high gross margins and profitability at scale.",
+          "corrected": "Deel's revenue model includes a $49 monthly fee per active contractor and $599 per full-time employee; the company achieves high gross margins (~85%) and profitability at scale through operational efficiencies.",
+          "reason": "Source 24 describes the $49/$599 fee structure but attributes high margins to operational efficiencies (eliminating third-party partners, own payroll engine, automation), not directly to the fee model."
+        }
+      ]
+    },
+    {
+      "name": "Zoho",
+      "intent": "vendor",
+      "note": "",
+      "resolvedAs": "Zoho",
+      "lookalikes": [],
+      "error": null,
+      "seconds": 78.2,
+      "usd": 0.07316722,
+      "tavilyCredits": 9,
+      "llmCalls": {
+        "super": 6,
+        "nano": 6,
+        "ultra": 6
+      },
+      "tavilyRequests": 10,
+      "sources": 48,
+      "setAside": 5,
+      "claims": 24,
+      "held": 15,
+      "corrected": 9,
+      "unsupported": 0,
+      "uncited": 0,
+      "wrongEntity": 0,
+      "sectionsCovered": 5,
+      "sectionsTotal": 5,
+      "decision": "caution",
+      "confidence": 81,
+      "redFlags": [
+        "Founder Sridhar Vembu ordered to post $1.7 B bond in divorce case; court found Zoho Corporation and related entities acted to prejudice spouse’s interests via share/IP transfers without consent.",
+        "41 % of negative Trustpilot reviews cite prolonged support delays and unhelpful responses; multiple users report difficulty cancelling subscriptions and obtaining refunds."
+      ],
+      "struck": [],
+      "correctedExamples": [
+        {
+          "section": "Identity & Legitimacy",
+          "filed": "The company was incorporated as AdventNet in 1996 and renamed Zoho Corporation in 2009, and it employs over 600 people worldwide.",
+          "corrected": "The company was founded in 1996 and employs over 600 people worldwide.",
+          "reason": "Source 12 states founded in 1996 and over 600 employees but does not mention incorporation as AdventNet or renaming in 2009."
+        },
+        {
+          "section": "Identity & Legitimacy",
+          "filed": "The company has been in operation for more than 25 years, marking 25 years of existence in 2024, reflecting its long-standing presence in the software industry.",
+          "corrected": "The company marked 25 years of existence in 2024, reflecting its long-standing presence in the software industry.",
+          "reason": "Source 3 states 'This year marks 25 glorious years' in 2024, not 'more than 25 years'."
+        },
+        {
+          "section": "Reputation & Complaints",
+          "filed": "Zoho Corporation has been accused of charging customers for canceled subscriptions and failing to honor cancellation requests, with users reporting that support staff do not act on cancellations and accounts remain active after requests.",
+          "corrected": "A user reported difficulty canceling and deleting their Zoho account, alleging poor support and misleading practices, but did not explicitly state being charged after cancellation.",
+          "reason": "Source 15 is a single user's complaint about inability to delete account and poor support, not explicit about being charged for canceled subscriptions, and not multiple users."
+        },
+        {
+          "section": "Reputation & Complaints",
+          "filed": "Multiple Reddit users report being scammed by Zoho, describing situations where they were billed for subscriptions they had cancelled and faced difficulties obtaining refunds or account deletions.",
+          "corrected": "A Reddit user reported being charged for a canceled subscription and difficulty obtaining a refund or account deletion.",
+          "reason": "Source 14 is a single Reddit user's report, not multiple users."
+        },
+        {
+          "section": "Reputation & Complaints",
+          "filed": "Zoho CRM is criticized for a cluttered interface, slow loading speeds, and complexity that overwhelms beginners, despite offering extensive features and integrations.",
+          "corrected": "Zoho CRM is criticized for a cluttered interface and complexity that overwhelms beginners, despite offering extensive features and integrations.",
+          "reason": "Source 16 mentions cluttered interface and complexity but does not mention slow loading speeds."
+        },
+        {
+          "section": "Reputation & Complaints",
+          "filed": "Zoho Mail receives mixed feedback, with some users praising its structured, responsive design across platforms and free tier benefits, while others note it can feel too bare for daily business use.",
+          "corrected": "A reviewer of Zoho Mail provides mixed feedback, praising its structured, responsive design across platforms and free tier benefits, while noting it can feel too bare for daily business use.",
+          "reason": "Source 17 is a single reviewer's mixed assessment, not multiple users."
+        },
+        {
+          "section": "Legal & Regulatory",
+          "filed": "Zoho’s eDiscovery guidance warns that organizations must retain relevant email data for the duration of any legal investigation and may need to export or purge data to manage storage limits, a process that can be triggered by court orders or regulatory holds",
+          "corrected": "Zoho’s eDiscovery guidance warns that organizations must retain relevant email data for the duration of any legal investigation and may need to export or purge data to manage storage limits.",
+          "reason": "Source 43 states organizations must retain emails during a legal investigation and may export/purge to manage storage, but does not explicitly say the process is triggered by court orders or regulatory holds."
+        },
+        {
+          "section": "Financial Health",
+          "filed": "Zoho crossed the $1 B annual revenue threshold in 2022, becoming the first bootstrapped Indian company to do so, and serves over 100 million users across 80+ countries",
+          "corrected": "Zoho crossed the $1B annual revenue threshold in 2022.",
+          "reason": "Source 21 only supports the $1B revenue threshold in 2022; it does not mention being the first bootstrapped Indian company or user/country counts."
+        },
+        {
+          "section": "Financial Health",
+          "filed": "Zoho’s privately held structure and consistent profitability have allowed it to avoid external funding rounds, having raised only $7.3 M across three rounds up to 2016",
+          "corrected": "Zoho has raised $7.3M across three funding rounds up to 2016.",
+          "reason": "Source 20 states Zoho raised $7.3M across three rounds up to 2016, while source 23 claims it never received external funding; the claim merges these inconsistently."
+        }
+      ]
+    },
+    {
+      "name": "Razorpay",
+      "intent": "vendor",
+      "note": "",
+      "resolvedAs": "Razorpay",
+      "lookalikes": [],
+      "error": null,
+      "seconds": 55.3,
+      "usd": 0.05804378,
+      "tavilyCredits": 9,
+      "llmCalls": {
+        "super": 6,
+        "nano": 6,
+        "ultra": 6
+      },
+      "tavilyRequests": 9,
+      "sources": 39,
+      "setAside": 0,
+      "claims": 24,
+      "held": 16,
+      "corrected": 7,
+      "unsupported": 1,
+      "uncited": 0,
+      "wrongEntity": 0,
+      "sectionsCovered": 5,
+      "sectionsTotal": 5,
+      "decision": "caution",
+      "confidence": 81,
+      "redFlags": [
+        "Trustpilot rating of 1.4/5 across 60 reviews cites frequent unresponsive support, payment processing failures, hidden complications, and unexpected fund holds that disrupted business operations.",
+        "The Enforcement Directorate filed a charge sheet against Razorpay alongside three fintech companies controlled by Chinese entities, though the Supreme Court later quashed the money-laundering proceedings.",
+        "Razorpay's terms allow it to recover regulatory penalties from merchants through deductions from settlement amounts, creating potential pass-through liability."
+      ],
+      "struck": [
+        {
+          "section": "Legal & Regulatory",
+          "ruling": "unsupported",
+          "claim": "Razorpay is involved in legal proceedings concerning compliance with RBI regulations and payment gateway obligations, though specific outcomes are not detailed in the provided sources.",
+          "reason": "Source 20 describes Razorpay's RBI authorization and compliance features but does not mention any legal proceedings regarding RBI regulations or payment gateway obligations."
+        }
+      ],
+      "correctedExamples": [
+        {
+          "section": "Identity & Legitimacy",
+          "filed": "Razorpay Payments Private Limited is a legally registered entity incorporated as U62099KA2024PTC188982 on 2024-01-01 with its registered office at 1st Floor, SJR Cyber, 22 Laskar Hosur Road, Adugodi, Bengaluru, 560030, Karnataka, India.",
+          "corrected": "Razorpay Payments Private Limited is a legally registered entity with CIN U62099KA2024PTC188982 and registered office at 1st Floor, SJR Cyber, 22 Laskar Hosur Road, Adugodi, Bengaluru, 560030, Karnataka, India.",
+          "reason": "Source 1 confirms the CIN and registered office address but does not specify the incorporation date 2024-01-01."
+        },
+        {
+          "section": "Delivery Track Record",
+          "filed": "Razorpay invests in multi-channel digital marketing, driving 2.6 million monthly visitors through integrated organic search, paid campaigns, and social platforms, with LinkedIn used for B2B lead generation.",
+          "corrected": "Razorpay invests in multi-channel digital marketing, with organic search driving 2.6 million monthly visitors, paid campaigns 130.8K visitors, and social platforms including 1M LinkedIn followers used for B2B lead generation.",
+          "reason": "Source [23] specifies 2.6M visitors from organic search only, with paid campaigns at 130.8K visitors and social platforms at 1M LinkedIn followers; the claim conflates these into a single 2.6M figure across all channels."
+        },
+        {
+          "section": "Reputation & Complaints",
+          "filed": "Razorpay is rated \"Bad\" with 1.4/5 on Trustpilot based on 17 reviews, with complaints about fraud, missing GST numbers, and unresolved payment issues",
+          "corrected": "Razorpay is rated \"Bad\" with 1.4/5 on Trustpilot; a reviewer with 17 reviews complained about fraud, missing GST numbers, and unresolved payment issues.",
+          "reason": "The source shows a 1.4/5 Trustpilot rating and a single reviewer who has written 17 reviews, not that the rating is based on 17 reviews."
+        },
+        {
+          "section": "Reputation & Complaints",
+          "filed": "Reddit users label Razorpay as \"scam\" and \"completely useless\", citing wasted time and money",
+          "corrected": "A Reddit user labeled Razorpay as \"scam\" and \"completely useless\", citing wasted time and money.",
+          "reason": "The source cites a single Reddit post, not multiple users."
+        },
+        {
+          "section": "Reputation & Complaints",
+          "filed": "A Quora discussion questions Razorpay's safety for payments, indicating public concern about its use",
+          "corrected": "A Quora question asks whether Razorpay is safe for payments, reflecting user curiosity about its safety.",
+          "reason": "The source is a single Quora question title, not a discussion, and any public concern is inferred rather than stated."
+        },
+        {
+          "section": "Legal & Regulatory",
+          "filed": "The Enforcement Directorate filed a charge sheet against Razorpay, alleging it processed transactions for fintech companies linked to illegal loan apps and Chinese-controlled entities.",
+          "corrected": "The Enforcement Directorate filed a charge sheet against Razorpay and three fintech companies controlled by Chinese entities.",
+          "reason": "Source 18 mentions a charge sheet against Razorpay and Chinese-controlled fintech companies but does not include the allegation about illegal loan apps in the provided excerpt."
+        },
+        {
+          "section": "Financial Health",
+          "filed": "The company serves over a million businesses across India and Singapore, positioning it as a leading full-stack financial solutions provider in the region.",
+          "corrected": "The company serves over a million businesses in India and millions across India and Malaysia, positioning it as a leading full-stack financial solutions provider in the region.",
+          "reason": "Source 32 says 'serves over a million businesses' without geography; source 34 says 'serves millions of businesses across India and Malaysia' – not Singapore."
+        }
+      ]
+    },
+    {
+      "name": "Ramp",
+      "intent": "vendor",
+      "note": "ambiguous name",
+      "resolvedAs": "Ramp",
+      "lookalikes": [],
+      "error": null,
+      "seconds": 51.3,
+      "usd": 0.04779242,
+      "tavilyCredits": 8,
+      "llmCalls": {
+        "super": 6,
+        "nano": 6,
+        "ultra": 6
+      },
+      "tavilyRequests": 8,
+      "sources": 38,
+      "setAside": 9,
+      "claims": 17,
+      "held": 9,
+      "corrected": 8,
+      "unsupported": 0,
+      "uncited": 0,
+      "wrongEntity": 0,
+      "sectionsCovered": 5,
+      "sectionsTotal": 5,
+      "decision": "caution",
+      "confidence": 76,
+      "redFlags": [
+        "Trustpilot rates Ramp 'Poor' at 2.6/5 with users citing bot-heavy support, onboarding frustration, and inflexible setup forcing manual workarounds.",
+        "A Reddit reviewer describes daily glitches, frequent fraud issues, and missing audit features, calling the product 'GARBAGE'."
+      ],
+      "struck": [],
+      "correctedExamples": [
+        {
+          "section": "Identity & Legitimacy",
+          "filed": "Ramp Corporation is a private fintech company incorporated in 2019, headquartered in New York City, with founders Eric Glyman (CEO) and Karim Atiyeh (CTO) and approximately 1,200 employees as of 2025.",
+          "corrected": "Ramp Corporation is a private fintech company incorporated in 2019, headquartered in New York City, with founders Eric Glyman (CEO), Karim Atiyeh (CTO), and Gene Lee, and approximately 1,200 employees as of 2025.",
+          "reason": "Sources list three founders (Eric Glyman, Karim Atiyeh, Gene Lee) but claim mentions only two."
+        },
+        {
+          "section": "Identity & Legitimacy",
+          "filed": "The company operates under the domain ramp.com and has been recognized in industry rankings such as Forbes Cloud 100, CNBC Disruptor 50, and TIME's 100 Most Influential Companies, and reports over $1.0 billion in revenue for 2025.",
+          "corrected": "The company operates under the domain ramp.com and has been recognized in industry rankings such as Forbes Cloud 100, CNBC Disruptor 50, and TIME's 100 Most Influential Companies, and reports $1.0 billion in revenue for 2025.",
+          "reason": "Source states revenue as US$1.0 billion (2025), not over $1.0 billion."
+        },
+        {
+          "section": "Identity & Legitimacy",
+          "filed": "Ramp has raised significant capital, including a Series E round in 2024 at a $16 billion valuation led by Founders Fund, and processes over $80 billion in annualized purchase volume across its customer base.",
+          "corrected": "Ramp has raised significant capital, including a Series E round at a $16 billion valuation led by Founders Fund, and processes over $80 billion in annualized purchase volume across its customer base.",
+          "reason": "Source 22 does not specify the year of the Series E round; it only states the round occurred at a $16 billion valuation led by Founders Fund."
+        },
+        {
+          "section": "Delivery Track Record",
+          "filed": "Ramp serves notable clients including Eventbrite, Second City, and Foursquare, with reported savings of $2M+ and 4x faster PO creation and invoice processing.",
+          "corrected": "Ramp serves notable clients including Eventbrite, Second City, and Foursquare; case studies report $2M+ savings for ABB Optical and 4x faster PO creation for Foursquare.",
+          "reason": "The $2M+ savings is attributed to ABB Optical, not Eventbrite/Second City/Foursquare; 4x faster PO creation is for Foursquare only; Second City is 2x quicker bill processing."
+        },
+        {
+          "section": "Reputation & Complaints",
+          "filed": "Some reviewers note that Ramp’s inflexible setup forces manual workarounds and lacks features needed for auditing",
+          "corrected": "Some reviewers note that Ramp’s inflexible setup forces manual workarounds and lacks visibility/reporting features.",
+          "reason": "Source 12 supports manual workarounds (bulk update not possible) but does not mention lacking auditing features; that appears in source 14."
+        },
+        {
+          "section": "Reputation & Complaints",
+          "filed": "Multiple Reddit users describe Ramp as \"GARBAGE\" with daily glitches, frequent fraud issues, and missing audit features",
+          "corrected": "A Reddit user describes Ramp as 'GARBAGE' with daily glitches, frequent fraud issues, and missing audit features.",
+          "reason": "Source 14 shows only one Reddit user's comment, not multiple users."
+        },
+        {
+          "section": "Financial Health",
+          "filed": "Ramp's revenue grew to $1.5 billion in annualized terms by May 2026, up from ~$1.2 billion at the end of 2025, with net revenue up 133% year‑over‑year",
+          "corrected": "Sacra estimates Ramp's annualized revenue reached $1.5 billion by May 2026, up from ~$1.2 billion at end of 2025, with net revenue up 133% year-over-year.",
+          "reason": "Source 27 attributes the $1.5B annualized revenue figure to Sacra estimates, but the claim presents it as fact without qualification."
+        },
+        {
+          "section": "Financial Health",
+          "filed": "Ramp was founded in March 2019 by Eric Glyman, Karim Atiyeh, and Gene Lee, and has raised $2.3 billion in total equity financing to date",
+          "corrected": "Ramp was founded in 2019 by Eric Glyman, Karim Atiyeh, and Gene Lee, and has raised $2.3 billion in total equity financing to date.",
+          "reason": "Source 21 states Ramp was founded in 2019 (not March 2019); source 26 supports the $2.3B total equity financing figure."
+        }
+      ]
+    },
+    {
+      "name": "Stripe",
+      "intent": "partner",
+      "note": "",
+      "resolvedAs": "Stripe",
+      "lookalikes": [],
+      "error": null,
+      "seconds": 55.1,
+      "usd": 0.06538678,
+      "tavilyCredits": 7,
+      "llmCalls": {
+        "super": 4,
+        "nano": 6,
+        "ultra": 6
+      },
+      "tavilyRequests": 7,
+      "sources": 32,
+      "setAside": 0,
+      "claims": 25,
+      "held": 15,
+      "corrected": 8,
+      "unsupported": 2,
+      "uncited": 0,
+      "wrongEntity": 0,
+      "sectionsCovered": 5,
+      "sectionsTotal": 5,
+      "decision": "proceed",
+      "confidence": 76,
+      "redFlags": [
+        "Stripe was fined $137,500 by Mastercard for a merchant's noncompliance, indicating potential gaps in merchant monitoring that could expose partners to passed-through penalties.",
+        "Stripe's Services Agreement shifts attorney fees to the prevailing party and imposes a 30-day resolution window after written notice, making disputes costly and time-pressured for merchants.",
+        "Stripe froze $1.45 million of a merchant's funds until 2026 citing elevated risk and potential chargebacks, demonstrating its willingness to restrict partner liquidity unilaterally."
+      ],
+      "struck": [
+        {
+          "section": "Ownership & Leadership",
+          "ruling": "unsupported",
+          "claim": "Stripe, Inc. is an American multinational financial services and SaaS company providing payment-processing software and APIs for e-commerce and mobile applications, founded in 2010 by brothers John and Patrick Collison.",
+          "reason": "Source [26] does not describe Stripe as an American multinational financial services and SaaS company, nor does it state the founding year as 2010."
+        },
+        {
+          "section": "Track Record with Partners",
+          "ruling": "unsupported",
+          "claim": "Stripe may terminate a merchant relationship if a financial partner prohibits Stripe from processing transactions, even for transactions initiated before termination.",
+          "reason": "Source [20] describes post-termination transaction completion, not termination due to financial partner prohibition."
+        }
+      ],
+      "correctedExamples": [
+        {
+          "section": "Identity & Legitimacy",
+          "filed": "Stripe, Inc. is a Delaware‑registered corporation incorporated on 13 April 2009, with its principal executive offices at 354 Oyster Point Boulevard, San Francisco, CA 94080, and a legal entity identifier (LEI) 549300CLHGIPTCYHQ143; it is also known as Stripe Payments Company (LEI 549300YK0Z4SWKNYPQ72) and operates under the parent entity Stripe, LLC (LEI 549300CLHGIPTCYHQ143)【8†source】【31†source】",
+          "corrected": "Stripe, Inc. (now Stripe, LLC) is a Delaware-registered entity incorporated on 13 April 2009 with LEI 549300CLHGIPTCYHQ143 and an address at 354 Oyster Point Boulevard, San Francisco, CA 94080. Stripe Payments Company is a separate entity (LEI 549300YK0Z4SWKNYPQ72) incorporated in 2013.",
+          "reason": "Sources show two distinct entities (Stripe Payments Company and Stripe, LLC) with different incorporation dates and addresses; Stripe, Inc. is the former name of Stripe, LLC, not a separate entity operating under it."
+        },
+        {
+          "section": "Identity & Legitimacy",
+          "filed": "The company was founded in 2009 by Irish brothers Patrick and John Collison and, as of 2025, employs approximately 8,500 people worldwide【1†source】【2†source】",
+          "corrected": "As of 2025, Stripe employs approximately 8,500 people worldwide (per Wikipedia).",
+          "reason": "Cited sources confirm ~8,500 employees in 2025 but do not mention founding year or founders."
+        },
+        {
+          "section": "Identity & Legitimacy",
+          "filed": "Stripe’s official website is stripe.com and it maintains a corporate profile on LinkedIn, indicating its headquarters in both San Francisco, California and Dublin, Ireland【3†source】",
+          "corrected": "Stripe maintains a corporate profile on LinkedIn indicating its headquarters in both San Francisco, California and Dublin, Ireland.",
+          "reason": "Source [3] confirms headquarters in San Francisco and Dublin but does not provide the website URL stripe.com."
+        },
+        {
+          "section": "Identity & Legitimacy",
+          "filed": "Public filings list the company’s registration number and address as Delaware Division of Corporations entry RA000602 with address 354 Oyster Point Boulevard, San Francisco, CA 94080【8†source】【31†source】",
+          "corrected": "Public filings for Stripe, LLC (formerly Stripe, Inc.) list registration number RA000602 with an address at 354 Oyster Point Boulevard, San Francisco, CA 94080 (per LEI 549300CLHGIPTCYHQ143).",
+          "reason": "Source [31] lists registration RA000602 and address 354 Oyster Point Boulevard for Stripe, LLC; source [8] lists same registration but a different address (Wilmington, DE). The claim cites both sources for the same address."
+        },
+        {
+          "section": "Track Record with Partners",
+          "filed": "Merchants have the right to appeal a termination decision by providing documentation and evidence to address Stripe’s concerns, though the process may be challenging.",
+          "corrected": "Merchants may consider appealing a termination decision by providing documentation and evidence to address Stripe’s concerns, per legal advice.",
+          "reason": "Source [21] is a law firm advisory suggesting appeal with documentation, not a statement of a formal right or that the process is challenging."
+        },
+        {
+          "section": "Legal & Regulatory",
+          "filed": "Stripe’s dispute clause shifts attorney fees to the losing party and requires a 30‑day resolution window after written notice to disputes@stripe.com, making weak claims costly for merchants.",
+          "corrected": "Stripe's dispute clause shifts attorney fees to the prevailing party and requires a 30-day resolution window after written notice to notices@stripe.com, making weak claims costly for merchants.",
+          "reason": "Source [15] states the notice email is notices@stripe.com, not disputes@stripe.com; the fee-shifting provision and 30-day resolution window are correctly described."
+        },
+        {
+          "section": "Financial Health",
+          "filed": "Stripe laid off 300 employees in 2023, described as unrelated to financial performance despite slowing revenue growth",
+          "corrected": "Stripe laid off 300 employees, described as unrelated to financial performance.",
+          "reason": "Source 17 confirms 300 layoffs and that they were not connected to financial performance, but does not specify the year as 2023 nor mention slowing revenue growth."
+        },
+        {
+          "section": "Financial Health",
+          "filed": "Stripe's 2023 revenue growth slowed to 34% compared to competitors' 45% growth in 2024, indicating potential performance divergence",
+          "corrected": "A LinkedIn post estimated Stripe's 2023 revenue growth at 34% and reported Checkout.com's 2024 growth at 45%.",
+          "reason": "Source 19 is a LinkedIn post with unverified estimates; it cites a single competitor (Checkout.com) and compares Stripe's 2023 growth (34%) to Checkout.com's 2024 growth (45%), not a general competitor comparison."
+        }
+      ]
+    },
+    {
+      "name": "Wirecard",
+      "intent": "partner",
+      "note": "known-bad: collapsed in a 2020 accounting fraud",
+      "resolvedAs": "Wirecard",
+      "lookalikes": [],
+      "error": null,
+      "seconds": 68.4,
+      "usd": 0.0702719,
+      "tavilyCredits": 12,
+      "llmCalls": {
+        "super": 5,
+        "nano": 6,
+        "ultra": 6
+      },
+      "tavilyRequests": 12,
+      "sources": 38,
+      "setAside": 2,
+      "claims": 24,
+      "held": 9,
+      "corrected": 14,
+      "unsupported": 1,
+      "uncited": 0,
+      "wrongEntity": 0,
+      "sectionsCovered": 5,
+      "sectionsTotal": 5,
+      "decision": "stop",
+      "confidence": 67,
+      "redFlags": [
+        "Wirecard AG filed for insolvency in June 2020 after disclosing a €1.9 billion hole in its balance sheet and is unable to pay creditors.",
+        "Former CEO Markus Braun was arrested for alleged fraud and market manipulation; former COO Jan Marsalek fled to Russia.",
+        "Shareholder claims of €8.5 billion were subordinated to creditor claims, leaving no recovery from the €650 million insolvency estate.",
+        "EY Germany could not obtain sufficient audit evidence for €1.9 billion cash balances on trust accounts, and a 2018 memorandum detailed red-flag indicators.",
+        "Total claims against the insolvent estate exceed €15 billion, including €3.3 billion in financial creditor losses."
+      ],
+      "struck": [
+        {
+          "section": "Financial Health",
+          "ruling": "unsupported",
+          "claim": "Former CEO Markus Braun and other executives were arrested and charged with fraud, embezzlement and market manipulation, confirming criminal liability for the accounting scandal.",
+          "reason": "Source 23 snippet does not mention arrests or charges against Markus Braun or other executives."
+        }
+      ],
+      "correctedExamples": [
+        {
+          "section": "Identity & Legitimacy",
+          "filed": "Wirecard AG was incorporated on May 6, 1999 and renamed Wirecard AG upon entry in the commercial register in June 2006 (originally InfoGenie Europe AG); it was headquartered at Einsteinring 35, 85609 Aschheim b. München, Germany, with phone +49 (0)89-4424 1400 and fax +49 (0)89-4424 1500 [12]",
+          "corrected": "Wirecard AG was established on May 6, 1999, renamed from InfoGenie Europe AG to Wire Card AG on March 14, 2005, and to Wirecard AG on June 19, 2006; its headquarters moved to Einsteinring 35, 85609 Aschheim b. München, Germany in April 2011.",
+          "reason": "Source [12] confirms incorporation date and name changes but does not include phone/fax numbers; those appear in source [1] not cited."
+        },
+        {
+          "section": "Identity & Legitimacy",
+          "filed": "The company was listed on the regulated market in Frankfurt (Prime Standard) and other German exchanges, with ISIN DE0007472060 and WKN 747206, and was part of the DAX, TecDAX, Prime All Share and Technology All Share indices [1]",
+          "corrected": "The company had ISIN DE0007472060 and WKN 747206, and was part of the DAX, TecDAX, Prime All Share, and Technology All Share indices.",
+          "reason": "Source [1] lists ISIN, WKN, and indices but does not state the company was listed on the regulated market in Frankfurt (Prime Standard) or other German exchanges."
+        },
+        {
+          "section": "Identity & Legitimacy",
+          "filed": "Wirecard AG filed for insolvency after admitting a €1.9 billion (≈$2 billion) hole in its balance sheet, leading to the arrest of former CEO and other executives [8]",
+          "corrected": "Wirecard AG filed for insolvency days after revealing a $2 billion hole in its balance sheet.",
+          "reason": "Source [8] states Wirecard filed for insolvency days after revealing a $2 billion hole, but does not mention €1.9 billion, admission, or arrests of executives."
+        },
+        {
+          "section": "Ownership & Leadership",
+          "filed": "The company expanded to 26+ subsidiaries worldwide and reported €2.02 billion revenue and €347.4 million net income for 2018, but later disclosed a €1.9 billion shortfall in its balance sheet leading to insolvency in June 2020",
+          "corrected": "The company expanded to multiple subsidiaries worldwide (at least 8 identified) and reported €2.02 billion revenue and €347.4 million net income for 2018, but later disclosed a €1.9 billion shortfall in its balance sheet leading to insolvency in June 2020.",
+          "reason": "Cited sources [3] and [16] do not support '26+ subsidiaries'; source [3] lists only 8 subsidiaries."
+        },
+        {
+          "section": "Ownership & Leadership",
+          "filed": "Former CEO Markus Braun was arrested in June 2020 for alleged fraud and market manipulation, while former COO Jan Marsalek fled the country and was later linked to the creation of fictitious €1.9 billion trust assets in the Philippines",
+          "corrected": "Former CEO Markus Braun was arrested in June 2020 for alleged fraud and market manipulation, while former COO Jan Marsalek fled to Russia; the €1.9 billion missing was flagged in Philippines trusts but Marsalek's direct link to their creation is not established in cited sources.",
+          "reason": "Cited sources do not link Marsalek to the creation of the fictitious €1.9 billion Philippines trust assets; source [15] notes EY flagged them, source [17] links Marsalek to shell companies in Hong Kong/BVI."
+        },
+        {
+          "section": "Ownership & Leadership",
+          "filed": "More than 50,000 shareholders filed damage claims totalling €8.5 billion, but the Federal Court of Justice ruled in November 2023 that these claims are subordinated to all creditor claims, leaving shareholders with no recovery from the €650 million insolvency estate",
+          "corrected": "More than 50,000 shareholders filed damage claims totalling €8.5 billion, but the Federal Court of Justice ruled in November 2025 that these claims are subordinated to all creditor claims, leaving shareholders with no recovery from the €650 million insolvency estate.",
+          "reason": "Source [31] dates the Federal Court of Justice ruling to November 2025, not November 2023."
+        },
+        {
+          "section": "Track Record with Partners",
+          "filed": "Wirecard partnered with third‑party acquirers (TPAs) that processed payments on its behalf, a relationship that later left EY Germany unable to obtain sufficient audit evidence for the €1.9 billion cash balances claimed on trust accounts, leading to a significant drop in Wirecard’s share price and prompting a 2018 memorandum highlighting red‑flag indicators [19]",
+          "corrected": "Wirecard partnered with third‑party acquirers (TPAs); EY Germany could not obtain sufficient audit evidence for the €1.9 billion cash balances on trust accounts; after the 2020 announcement Wirecard’s shares fell significantly; a 2018 memorandum had detailed red‑flag indicators.",
+          "reason": "Source confirms partnership with TPAs, EY Germany's evidence issue, share price drop after 2020 announcement, and a 2018 memorandum, but does not support that the drop prompted the 2018 memorandum or that the memorandum followed the drop."
+        },
+        {
+          "section": "Track Record with Partners",
+          "filed": "The German Federal Court of Justice ruled in 2025 that shareholder claims arising from Wirecard’s insolvency are not ordinary insolvency claims, reinforcing the legal treatment of such claims as equity and affecting potential damages [38]",
+          "corrected": "The German Federal Court of Justice stated in a 2025 press release that shareholder claims registered in Wirecard AG’s insolvency are not ordinary insolvency claims.",
+          "reason": "Source reports the Federal Court of Justice’s 2025 press release that shareholder claims are not ordinary insolvency claims, but does not explicitly state that this reinforces their treatment as equity or affects damages."
+        },
+        {
+          "section": "Track Record with Partners",
+          "filed": "Wirecard’s former executives, including Markus Braun and Jan Marsalek, allegedly facilitated the purchase of EMIF1a—a Mauritius‑registered entity that sold payment groups to Wirecard—using connections introduced by British adviser Henry O’Sullivan [17]",
+          "corrected": "Former Wirecard executives, notably Jan Marsalek, were allegedly involved in the purchase of EMIF1a, a Mauritius entity that sold payment groups to Wirecard; Marsalek was introduced to the payment‑group co‑founders by British adviser Henry O’Sullivan.",
+          "reason": "Source indicates Jan Marsalek was introduced to payment‑group co‑founders by Henry O’Sullivan and that executives were behind EMIF1a, but does not confirm Markus Braun facilitated the purchase or that O’Sullivan’s connections were used to facilitate it."
+        },
+        {
+          "section": "Legal & Regulatory",
+          "filed": "German court ruled that Ernst & Young (EY) is not liable for damages related to the Wirecard scandal (Case No. III ZR 438/23).",
+          "corrected": "German court ruled that Ernst & Young (EY) is not liable for damages related to the Wirecard scandal.",
+          "reason": "Source [24] reports EY not liable but does not mention case number III ZR 438/23 (that number appears in source [34] for a different ruling)."
+        },
+        {
+          "section": "Legal & Regulatory",
+          "filed": "Wirecard shareholders collectively lost billions, with the insolvency estate of €650 million insufficient to cover creditor claims of €15.4 billion.",
+          "corrected": "Wirecard shareholders filed damages claims totaling €8.5 billion, while the insolvency estate of €650 million is insufficient to cover financial creditor losses of €3.3 billion (total claims including shareholders reach €15.4 billion).",
+          "reason": "Source [29] distinguishes financial creditor losses (€3.3B) from total claims including shareholders (€15.4B), and notes shareholders are not creditors; the claim incorrectly labels the €15.4B as creditor claims."
+        },
+        {
+          "section": "Financial Health",
+          "filed": "Wirecard AG filed for insolvency in August 2020 after admitting that €1.9 billion in cash‑like assets were missing, leaving the company insolvent and unable to pay its creditors.",
+          "corrected": "Wirecard AG entered insolvency proceedings in August 2020, leaving the company insolvent and unable to pay its creditors.",
+          "reason": "Source 29 states Wirecard entered insolvency proceedings in August 2020 but does not mention admission of €1.9B missing cash-like assets."
+        },
+        {
+          "section": "Financial Health",
+          "filed": "The company reported €2.02 billion in revenue and €347.4 million in net income for 2018, but these figures were later shown to be inflated due to accounting adjustments and restatements.",
+          "corrected": "The company reported revenue growth in 2018, but figures were later adjusted due to accounting corrections and errors in revenue recognition.",
+          "reason": "Source 21 mentions revenue growth and corrections under IAS 8 but does not state the specific figures of €2.02B revenue and €347.4M net income for 2018."
+        },
+        {
+          "section": "Financial Health",
+          "filed": "In September 2018 Wirecard was added to the DAX 30 index, giving it a market valuation of roughly €21 billion and making it appear financially robust before the scandal unfolded.",
+          "corrected": "In September 2018 Wirecard was added to the DAX 30 index, with its market capitalization briefly topping €24 billion, making it appear financially robust before the scandal unfolded.",
+          "reason": "Source 10 states Wirecard was added to DAX 30 on 24 September 2018 and market cap briefly topped €24B, not €21B."
+        }
+      ]
+    },
+    {
+      "name": "Rippling",
+      "intent": "partner",
+      "note": "",
+      "resolvedAs": "Rippling",
+      "lookalikes": [],
+      "error": null,
+      "seconds": 67.5,
+      "usd": 0.07041597999999999,
+      "tavilyCredits": 11,
+      "llmCalls": {
+        "super": 6,
+        "nano": 6,
+        "ultra": 6
+      },
+      "tavilyRequests": 15,
+      "sources": 48,
+      "setAside": 5,
+      "claims": 22,
+      "held": 14,
+      "corrected": 7,
+      "unsupported": 1,
+      "uncited": 0,
+      "wrongEntity": 0,
+      "sectionsCovered": 5,
+      "sectionsTotal": 5,
+      "decision": "caution",
+      "confidence": 80,
+      "redFlags": [
+        "Runlayer has sued Rippling in California Superior Court alleging misappropriation of MCP gateway trade secrets after partnership discussions, seeking over $10 million in damages and injunctive relief.",
+        "A terminated partnership reportedly involved Rippling evaluating a startup’s technology, receiving detailed documentation, and then launching a competing product, leading to allegations of NDA violations and IP misappropriation.",
+        "CEO Parker Conrad previously co‑founded Zenefits, which was fined nearly $1 million by the SEC for misleading investors about compliance issues; Conrad resigned before founding Rippling.",
+        "Rippling is engaged in high‑stakes litigation against competitor Deel alleging espionage and trade‑secret theft, with dramatic claims of a Deel employee fleeing to a bathroom to avoid a court order; Deel has moved to strike a key witness and suggested undisclosed financial arrangements."
+      ],
+      "struck": [
+        {
+          "section": "Financial Health",
+          "ruling": "unsupported",
+          "claim": "Rippling's valuation of $16.8 billion is considered modest relative to its $1 billion ARR, placing it behind competitors like Deel ($17.3 billion valuation) and Gusto, which also crossed $1 billion ARR and is positioned for potential IPO or further fundraising.",
+          "reason": "Sources 36 and 37 report competitor valuations and ARR figures but do not state that Rippling's valuation is modest relative to its $1B ARR, nor that it is behind Gusto (whose valuation is not given); the claim misrepresents the comparative positioning."
+        }
+      ],
+      "correctedExamples": [
+        {
+          "section": "Identity & Legitimacy",
+          "filed": "Rippling, Inc. is a privately held software company incorporated in California in 2016, headquartered at 55 2nd Street, San Francisco, CA 94105, with a reported employee count of 1,001–5,000 and annual revenue estimated at $1 billion–$10 billion (2026).",
+          "corrected": "Rippling, Inc. is a privately held software company founded in 2016, with headquarters reported at 55 2nd Street, San Francisco (per Seamless) and 430 California Street (per Silicon Valley Investclub), employee estimates ranging from 1,001–5,000 to 5,001–10,000, and annual revenue estimates ranging from $100M–$500M to $1B–$10B (2026).",
+          "reason": "Cited sources conflict on headquarters address (55 2nd St vs 430 California St), employee count (1,001–5,000 vs 5,001–10,000 vs 3,630), revenue ($1B–$10B vs $100M–$500M), and do not explicitly state incorporation in California."
+        },
+        {
+          "section": "Identity & Legitimacy",
+          "filed": "The company operates a unified workforce platform that integrates HR, IT, and finance functions, serving industries such as software development and SaaS.",
+          "corrected": "The company operates a unified workforce platform that integrates HR, IT, and finance functions.",
+          "reason": "Cited sources (3,6,7,10) confirm the unified workforce platform integrating HR, IT, and finance, but none mention industries served such as software development or SaaS."
+        },
+        {
+          "section": "Identity & Legitimacy",
+          "filed": "Rippling is listed on LeadIQ and Crunchbase as having a SIC code of 7372 (Prepackaged Software) and a NAICS code of 5112 (Software Publishers), and it maintains a public website at rippling.com with a corporate phone number (415) 213‑xxxx.",
+          "corrected": "Rippling is listed on LeadIQ with SIC code 7372 and NAICS code 5112, maintains a public website at rippling.com, and a corporate phone number (415) 213-xxxx is listed on Seamless.",
+          "reason": "Claim cites LeadIQ and Crunchbase for SIC/NAICS codes, but Crunchbase is not among the cited sources (1,2,5); LeadIQ (source 1) provides the codes, while phone number comes from Seamless (source 2)."
+        },
+        {
+          "section": "Ownership & Leadership",
+          "filed": "Rippling’s valuation reached $13.5 billion, reflecting its growth from a HR‑focused tool to a comprehensive workforce management system.",
+          "corrected": "Rippling’s valuation reached $13.5 billion.",
+          "reason": "Source [15] only states valuation of $13.5B, not the growth narrative from HR-focused tool to comprehensive system."
+        },
+        {
+          "section": "Legal & Regulatory",
+          "filed": "Rippling has filed a lawsuit in the U.S. District Court for the Northern District of California accusing Deel of racketeering, trade-secret theft, and unfair competition, alleging that a Deel employee stole confidential information via Slack and Salesforce and attempted to delete evidence after being served a court order.",
+          "corrected": "Rippling has filed a lawsuit in the U.S. District Court for the Northern District of California accusing Deel of racketeering and trade-secret theft, alleging that a Deel employee stole confidential information and attempted to delete evidence after being served a court order.",
+          "reason": "Cited sources 23 and 24 mention racketeering (RICO) and trade-secret theft but do not mention unfair competition or specify Slack and Salesforce as the platforms used."
+        },
+        {
+          "section": "Legal & Regulatory",
+          "filed": "Deel moved to strike the 'spy' witness in the Rippling case, arguing the allegations are part of a broader effort to block the truth from emerging amid mounting evidence.",
+          "corrected": "Deel moved to strike the 'spy' witness in the Rippling case; Rippling characterized the motion as a 'Hail Mary effort to stop the basic truth from coming out in the face of mounting evidence.'",
+          "reason": "Source 25 reports Deel moved to strike the witness, but the claim that Deel argued the allegations are a 'broader effort to block the truth' is actually a statement from Rippling's spokesperson, not Deel's argument."
+        },
+        {
+          "section": "Financial Health",
+          "filed": "Rippling announced a $200 million employee tender offer as part of its $450 million financing that values the company at $16.8 billion, reflecting continued investor confidence despite a still-dormant IPO market.",
+          "corrected": "Rippling announced a $200 million employee tender offer as part of its Series F financing valuing the company at $13.5 billion (per source 30), and separately raised $450 million at a $16.8 billion valuation in May 2025 (per source 28).",
+          "reason": "Source 30 describes the $200M tender offer as part of a Series F round valuing the company at $13.5B, while source 28 describes a $450M round at $16.8B without mentioning a tender offer; the claim conflates the two separate financings."
+        }
+      ]
+    },
+    {
+      "name": "Crossover",
+      "intent": "employer",
+      "note": "ambiguous name",
+      "resolvedAs": "Crossover",
+      "lookalikes": [
+        "CROSSOVER Software Company (A software development firm focused on AI, automation, online sales, and digital identity management)"
+      ],
+      "error": null,
+      "seconds": 87.8,
+      "usd": 0.04101604,
+      "tavilyCredits": 9,
+      "llmCalls": {
+        "super": 6,
+        "nano": 4,
+        "ultra": 4
+      },
+      "tavilyRequests": 10,
+      "sources": 46,
+      "setAside": 24,
+      "claims": 15,
+      "held": 9,
+      "corrected": 3,
+      "unsupported": 2,
+      "uncited": 1,
+      "wrongEntity": 0,
+      "sectionsCovered": 3,
+      "sectionsTotal": 5,
+      "decision": "proceed",
+      "confidence": 53,
+      "redFlags": [
+        "Career‑opportunity rating has fallen 3% in the last 12 months despite high overall satisfaction.",
+        "Multiple public candidate accounts describe the hiring pipeline (CCAT, multiple interviews) as excessively long and 'ridiculous,' which may signal a high‑friction onboarding culture."
+      ],
+      "struck": [
+        {
+          "section": "Recruiting Legitimacy",
+          "ruling": "unsupported",
+          "claim": "The company advertises six‑figure salaries and transparent requirements, but applicants must pay no upfront fees; any request for payment, hourly‑only offers, or crypto/cheque payments would indicate a scam rather than a legitimate offer",
+          "reason": "Cited sources (FTC general article and a critical LinkedIn post) do not state that Crossover advertises six‑figure salaries and transparent requirements, nor do they establish that hourly‑only offers or crypto payments are scam indicators for this company."
+        },
+        {
+          "section": "Recruiting Legitimacy",
+          "ruling": "unsupported",
+          "claim": "No source among the provided IDs indicates that Crossover uses look‑alike domains, messaging‑app interviews, or asks for upfront fees, so there is no documented evidence of recruitment scams tied to this brand",
+          "reason": "Cites no source."
+        },
+        {
+          "section": "Life as an Employee",
+          "ruling": "unsupported",
+          "claim": "Some reviews describe the work environment negatively, though specific details are limited in the available sources.",
+          "reason": "Source 18 is only a Quora question URL and title ('How is like to work at Crossover?') with no review content or negative descriptions provided."
+        }
+      ],
+      "correctedExamples": [
+        {
+          "section": "Identity & Legitimacy",
+          "filed": "Company size estimates range from 5,001-10,000 employees according to LinkedIn data, though this figure refers to associated members rather than total staff [2]",
+          "corrected": "LinkedIn data shows a company size estimate of 5,001-10,000 employees and 2,904 associated members (LinkedIn members listing Crossover as current workplace).",
+          "reason": "Source [2] shows 'Company Size 5,001-10,000 employees' and separately '2904 associated members'; the claim incorrectly states the 5,001-10,000 figure refers to associated members."
+        },
+        {
+          "section": "Recruiting Legitimacy",
+          "filed": "Crossover operates a global recruitment platform that matches high‑quality talent with remote full‑time roles, especially in education technology and tech, and its hiring pipeline includes a CCAT cognitive aptitude test and chat‑style screening interview (Step 1‑2) to shortlist roughly the top 1% of applicants",
+          "corrected": "Crossover operates a global recruitment platform that matches high‑quality talent with remote full‑time roles, especially in tech, and its hiring pipeline includes a CCAT cognitive aptitude test and chat‑style screening interview (Step 1‑2) to shortlist roughly the top 1% of applicants.",
+          "reason": "Cited sources mention global recruitment, remote roles, CCAT, chat screening, and top 1% shortlist, but do not specify 'education technology' as a focus."
+        },
+        {
+          "section": "Recruiting Legitimacy",
+          "filed": "Reddit users and a Medium article describe the hiring process as “ridiculous” and “utterly ridiculous,” citing IQ‑style tests and lengthy assessments, which some candidates view as a warning sign but do not prove the company is fraudulent",
+          "corrected": "A Reddit user describes the hiring process as 'utterly ridiculous,' citing IQ‑style tests and lengthy assessments; a Medium article criticizes the company but does not explicitly call the process 'ridiculous.'",
+          "reason": "Only the Reddit source calls the process 'utterly ridiculous'; the Medium article snippet does not use that language, and the claim adds an interpretive clause not present in the sources."
+        }
+      ]
+    },
+    {
+      "name": "Turing",
+      "intent": "employer",
+      "note": "ambiguous name",
+      "resolvedAs": "Turing",
+      "lookalikes": [
+        "The Alan Turing Institute (UK national institute for data science and AI research)"
+      ],
+      "error": null,
+      "seconds": 66.2,
+      "usd": 0.05596833999999999,
+      "tavilyCredits": 8,
+      "llmCalls": {
+        "super": 6,
+        "nano": 6,
+        "ultra": 6
+      },
+      "tavilyRequests": 8,
+      "sources": 42,
+      "setAside": 6,
+      "claims": 21,
+      "held": 10,
+      "corrected": 6,
+      "unsupported": 3,
+      "uncited": 0,
+      "wrongEntity": 2,
+      "sectionsCovered": 5,
+      "sectionsTotal": 5,
+      "decision": "caution",
+      "confidence": 62,
+      "redFlags": [
+        "Employees report frequent workforce reductions even as revenue grows 150% YoY and the company raises large rounds.",
+        "Multiple external reviews describe the hiring/platform experience as scam-like, citing unanswered pay inquiries, repetitive applications, and invasive onboarding scans."
+      ],
+      "struck": [
+        {
+          "section": "Recruiting Legitimacy",
+          "ruling": "unsupported",
+          "claim": "Turing.com is an AGI infrastructure company specializing in post‑training large language models for enterprise AI deployment, and it operates under the domain turing.com and the alias turing ai.",
+          "reason": "Cited sources describe Turing as a talent platform for remote software engineers, not an AGI infrastructure company specializing in post-training LLMs."
+        },
+        {
+          "section": "Recruiting Legitimacy",
+          "ruling": "wrong_entity",
+          "claim": "The FBI’s Internet Crime Complaint Center reported over $367 million lost to job scams in 2023, illustrating the prevalence of recruitment fraud that can involve AI‑generated postings and deepfake recruiter interactions.",
+          "reason": "Claim cites general FBI job-scam statistics from a Gem article, not information about Turing."
+        },
+        {
+          "section": "Life as an Employee",
+          "ruling": "unsupported",
+          "claim": "Glassdoor reviews indicate a 3.0/5 overall rating based on 300+ employee reviews, with 61% of employees recommending Turing to a friend.",
+          "reason": "The 3.0/5 rating and 300+ reviews are from AmbitionBox (source 29), not Glassdoor; source 32 does not mention a 3.0/5 overall rating."
+        },
+        {
+          "section": "Recent Developments",
+          "ruling": "wrong_entity",
+          "claim": "In September 2023, Turing’s cryptanalyst Jack Willis used Anthropic’s Claude Opus 5 model to break an unsolved Enigma message, highlighting recent AI‑driven breakthroughs.",
+          "reason": "Source [12] discusses historical Alan Turing and cryptanalysts breaking Enigma messages in 2026, not the company Turing; Jack Willis is not identified as Turing's employee and the date is 2026 not 2023."
+        },
+        {
+          "section": "Recent Developments",
+          "ruling": "unsupported",
+          "claim": "The company’s leadership has not announced any recent layoffs, shutdowns, or investigations, but no leadership changes have been reported in the provided sources.",
+          "reason": "Sources [11] and [12] do not mention layoffs, shutdowns, investigations, or leadership changes; the claim asserts facts not addressed in the cited sources."
+        }
+      ],
+      "correctedExamples": [
+        {
+          "section": "Identity & Legitimacy",
+          "filed": "Turing Enterprises Inc., founded in 2018 by Jonathan Siddharth and Vijay Krishnan, is a registered U.S. company headquartered at 1900 Embarcadero Road, Palo Alto, California, with approximately 1,001–5,000 employees and a $2.2 billion valuation after raising $111 M (Series C) in 2023.",
+          "corrected": "Turing Enterprises Inc., founded in 2018 by Jonathan Siddharth and Vijay Krishnan, is headquartered at 1900 Embarcadero Road, Palo Alto, California, with approximately 100–5,000 employees.",
+          "reason": "Cited sources 21 and 22 do not mention a $2.2B valuation or $111M Series C funding; employee range is given as 100–5,000, not 1,001–5,000."
+        },
+        {
+          "section": "Identity & Legitimacy",
+          "filed": "The company operates under the legal name Turing Enterprises Inc. and markets its services through the domains turing.com and work.turing.com, positioning itself as an AGI infrastructure provider that partners with Fortune 500 firms and AI labs to accelerate frontier model deployment.",
+          "corrected": "The company markets its services through turing.com and careers.turing.com, positioning itself as an AGI infrastructure provider that partners with Fortune 500 firms and AI labs to accelerate frontier model deployment.",
+          "reason": "Cited sources 1, 4, and 6 do not state the legal name Turing Enterprises Inc. nor mention the domain work.turing.com; they support AGI infrastructure positioning and Fortune 500/AI lab partnerships."
+        },
+        {
+          "section": "Identity & Legitimacy",
+          "filed": "Turing offers fully remote expert work opportunities, emphasizing flexible hours, bi‑weekly transparent payouts, and an elite global network spanning 140+ countries, and it has been recognized by Fast Company as one of the top 10 companies in the Workplace category.",
+          "corrected": "Turing offers fully remote expert work opportunities, emphasizing flexible hours, bi‑weekly transparent payouts, and an elite global network spanning 140+ countries.",
+          "reason": "Cited sources 5 and 7 support remote work, flexible hours, bi‑weekly payouts, and a 140+ country network, but do not mention Fast Company recognition (which appears in source 6, not cited)."
+        },
+        {
+          "section": "Recruiting Legitimacy",
+          "filed": "Multiple Reddit users have noted that Turing’s hiring process includes generic software consultancy language and has reported unanswered inquiries about pay, suggesting potential legitimacy concerns.",
+          "corrected": "One Reddit user noted Turing’s hiring process looks like a generic software consultancy and reported an unanswered pay inquiry; several other posters balked at face- and voice-scan onboarding.",
+          "reason": "Only one Reddit user mentioned generic consultancy language and unanswered pay inquiry; 'several posters' balked at onboarding scans, not those specific issues."
+        },
+        {
+          "section": "Life as an Employee",
+          "filed": "Employees rate compensation and benefits at 3.6 out of 5, with reported salaries ranging from $255K to $325K per year, and many citing competitive pay but no raises.",
+          "corrected": "Employees rate compensation and benefits at 3.6 out of 5, with reported salaries ranging from $255K to $325K per year.",
+          "reason": "Sources 30 and 32 confirm the 3.6/5 compensation rating and $255K-$325K salary range, but do not mention \"many citing competitive pay but no raises.\""
+        },
+        {
+          "section": "Financial Health",
+          "filed": "Turing has raised a total of $270M across 10 funding rounds, with the most recent $111M Series E closing in March 2025.",
+          "corrected": "Turing has raised a total of $270M across 10 funding rounds, with the most recent Series E closing in March 2025 at a $2.2B valuation.",
+          "reason": "Source 24 confirms total $270M across 10 rounds and a Series E in March 2025, but does not specify the $111M amount."
+        }
+      ]
+    },
+    {
+      "name": "Mercor",
+      "intent": "employer",
+      "note": "",
+      "resolvedAs": "Mercor",
+      "lookalikes": [],
+      "error": null,
+      "seconds": 68.3,
+      "usd": 0.06816384,
+      "tavilyCredits": 10,
+      "llmCalls": {
+        "super": 6,
+        "nano": 6,
+        "ultra": 6
+      },
+      "tavilyRequests": 9,
+      "sources": 41,
+      "setAside": 0,
+      "claims": 20,
+      "held": 11,
+      "corrected": 7,
+      "unsupported": 2,
+      "uncited": 0,
+      "wrongEntity": 0,
+      "sectionsCovered": 5,
+      "sectionsTotal": 5,
+      "decision": "proceed",
+      "confidence": 73,
+      "redFlags": [
+        "General recruitment-fraud warnings note scammers impersonate companies via look-alike domains and messaging-app interviews; no Mercor-specific scam reported, but verify the offer's authenticity.",
+        "Mercor confirmed a major security incident in April 2026 from a supply-chain cyberattack targeting LiteLLM, which may indicate operational vulnerabilities.",
+        "Employee compensation and benefits rating has declined 6% over the last 12 months to 4.0/5, with career opportunities at 3.9, suggesting potential pressure on rewards or growth."
+      ],
+      "struck": [
+        {
+          "section": "Identity & Legitimacy",
+          "ruling": "unsupported",
+          "claim": "Mercor reports approximately 300 employees (as of 2025) and serves major AI labs and enterprises such as OpenAI and Anthropic, with a reported annual recurring revenue approaching $450 million in late 2025.",
+          "reason": "Cited sources 1 and 11 do not mention ARR approaching $450M in late 2025; source 11 reports ARR $2B gross in June 2026."
+        },
+        {
+          "section": "Recruiting Legitimacy",
+          "ruling": "unsupported",
+          "claim": "Mercor's official careers page is listed on its main domain mercor.com, indicating a legitimate recruitment channel.",
+          "reason": "Source 28 discusses Philippine recruitment fraud law and general red flags; it does not mention Mercor, mercor.com, or any careers page."
+        }
+      ],
+      "correctedExamples": [
+        {
+          "section": "Identity & Legitimacy",
+          "filed": "Mercor is a private AI-powered hiring platform founded in January 2023 by Brendan Foody, Adarsh Hiremath, and Surya Midha, headquartered at 181 Fremont Street, San Francisco, CA 94105, USA, and legally registered as Mercor.io Corporation.",
+          "corrected": "Mercor is a private AI data startup founded in January 2023 by Brendan Foody, Adarsh Hiremath, and Surya Midha, headquartered at 181 Fremont Street, San Francisco, California, United States (per Wikipedia) or 55 2nd St, Floor 26, San Francisco, CA 94105 (per Silicon Valley Investclub), and legally registered as Mercor.io Corporation.",
+          "reason": "Sources give conflicting headquarters addresses (181 Fremont vs 55 2nd St) and describe Mercor as an AI data startup/talent marketplace, not specifically an AI-powered hiring platform."
+        },
+        {
+          "section": "Identity & Legitimacy",
+          "filed": "Mercor has raised a $350 million Series C round at a $10 billion valuation, making its founders the youngest self‑made billionaires in 2025, and it markets itself as the fastest‑growing AI recruiting platform.",
+          "corrected": "Mercor has raised a $350 million Series C round at a $10 billion valuation, and it markets itself as the fastest-growing company supplying human expertise.",
+          "reason": "Cited sources 6 and 12 confirm $350M Series C at $10B valuation, but do not state founders are youngest self-made billionaires (that claim appears in Wikipedia, not cited) and describe Mercor as fastest-growing company supplying human expertise, not specifically an AI recruiting platform."
+        },
+        {
+          "section": "Recruiting Legitimacy",
+          "filed": "Scammers may impersonate Mercor using look‑alike domains or messaging‑app interviews that request upfront fees or crypto payments, a pattern described in general recruitment‑fraud warnings.",
+          "corrected": "General recruitment-fraud warnings describe scammers using look-alike domains or messaging-app interviews that request upfront fees; these patterns could potentially be used to impersonate any company including Mercor.",
+          "reason": "Source 28 describes general recruitment-fraud patterns in the Philippines but does not mention Mercor, look-alike domains, messaging-app interviews, or crypto payments."
+        },
+        {
+          "section": "Financial Health",
+          "filed": "The company raised $492 million in total funding, including a $350 million Series C round on October 10, 2025, led by Felicis Ventures and General Catalyst, with a current valuation of $10 billion.",
+          "corrected": "The company raised $492 million in total funding, including a $350 million Series C round on October 10, 2025, led by Felicis Ventures with participation from General Catalyst, Benchmark, and Robinhood Ventures, at a $10 billion valuation.",
+          "reason": "Source shows Felicis Ventures led the Series C round, with General Catalyst as a participant, not a co-lead."
+        },
+        {
+          "section": "Recent Developments",
+          "filed": "Mercor was valued at $10 billion after a Series C round in October 2023, with a $350 million raise led by Felicis and participation from Benchmark, General Catalyst, and Robinhood Ventures.",
+          "corrected": "Mercor was valued at $10 billion after a Series C round in October 2025, with a $350 million raise led by Felicis and participation from Benchmark, General Catalyst, and Robinhood Ventures.",
+          "reason": "Sources indicate the Series C round occurred in October 2025, not October 2023."
+        },
+        {
+          "section": "Recent Developments",
+          "filed": "The company announced in April 2026 that it was acquiring Deeptune, a firm that helps train AI models, as part of its expansion into AI training and enterprise deployment.",
+          "corrected": "The company announced in July 2026 that it was acquiring Deeptune, a firm that helps train AI models, as part of its expansion into AI training and enterprise deployment.",
+          "reason": "Source states the acquisition was announced in July 2026, not April 2026."
+        },
+        {
+          "section": "Recent Developments",
+          "filed": "Mercor confirmed a major data breach in April 2026 resulting from a supply-chain cyberattack targeting LiteLLM, affecting its systems and potentially exposing sensitive data.",
+          "corrected": "Mercor confirmed a major security incident in April 2026 resulting from a supply-chain cyberattack targeting LiteLLM.",
+          "reason": "Source describes a 'major security incident' not explicitly a 'data breach', and does not mention potential exposure of sensitive data."
+        }
+      ]
+    },
+    {
+      "name": "Revature",
+      "intent": "employer",
+      "note": "",
+      "resolvedAs": "Revature",
+      "lookalikes": [],
+      "error": null,
+      "seconds": 57.3,
+      "usd": 0.03667164,
+      "tavilyCredits": 8,
+      "llmCalls": {
+        "super": 6,
+        "nano": 5,
+        "ultra": 5
+      },
+      "tavilyRequests": 9,
+      "sources": 31,
+      "setAside": 6,
+      "claims": 14,
+      "held": 9,
+      "corrected": 4,
+      "unsupported": 1,
+      "uncited": 0,
+      "wrongEntity": 0,
+      "sectionsCovered": 4,
+      "sectionsTotal": 5,
+      "decision": "caution",
+      "confidence": 69,
+      "redFlags": [
+        "Glassdoor reviews (2,180) rate compensation and benefits only 3.0/5, citing low pay, poor communication on client placement/onboarding, and long hours including weekend work.",
+        "AmbitionBox reviews (148) give an even lower 2.8/5 for salary and benefits, reflecting significant dissatisfaction with compensation.",
+        "Employee count fell 6.6% year-over-year to 1,441 in Q1 2026, which may signal retention challenges or strategic contraction."
+      ],
+      "struck": [
+        {
+          "section": "Recent Developments",
+          "ruling": "unsupported",
+          "claim": "Revature partnered with IIT Gandhinagar and BITS Pilani to advance AI research and education through MoUs with the Indian AI Research Organisation (IAIRO) (thehindu.com)",
+          "reason": "Source 23 states IIT Gandhinagar and BITS Pilani signed MoUs with IAIRO, not that Revature partnered with them."
+        }
+      ],
+      "correctedExamples": [
+        {
+          "section": "Life as an Employee",
+          "filed": "Employees rate compensation and benefits at 3.0 out of 5 based on 2,180 Glassdoor reviews, indicating generally low pay and concerns about lowball offers.",
+          "corrected": "Employees rate compensation and benefits at 3.0 out of 5 based on 2,180 Glassdoor reviews, indicating generally low pay.",
+          "reason": "Cited sources 18 and 19 mention a 3.0/5 rating and low pay, but do not explicitly mention 'lowball offers'."
+        },
+        {
+          "section": "Financial Health",
+          "filed": "Revature generated an estimated $325.7 million in annual revenue in 2026, with approximately 1,441 employees, reflecting a 6.6% decline from the prior year.",
+          "corrected": "Revature's estimated annual revenue is $325.7M (per Growjo), and it had 1,441 employees in Q1 2026, a 6.6% decline from the prior year.",
+          "reason": "Source 14 gives an estimated annual revenue of $325.7M but does not specify it is for 2026; source 16 provides 2026 employee count and decline but no revenue data."
+        },
+        {
+          "section": "Financial Health",
+          "filed": "The company has received at least $XX million in funding through a Series A acquisition financing round in February 2019, led by Investcorp, and maintains three investors overall.",
+          "corrected": "Revature has three investors; its latest funding round was an acquisition financing round on February 11 2019 with Investcorp, and it also completed a Series A round on March 7 2016; funding amounts are not disclosed.",
+          "reason": "Source 15 shows an Acq‑Fin round on Feb 11 2019 (Investcorp) and a separate Series A on Mar 7 2016; the claim conflates them and uses a placeholder amount ($XX million) not found in the source."
+        },
+        {
+          "section": "Recent Developments",
+          "filed": "Revature announced an AI Academy in a Box National Summit 2026 to drive AI-native engineering education in India (aninews.in)",
+          "corrected": "Revature hosted the AI Academy in a Box National Summit 2026 in Chennai",
+          "reason": "Source 24 states Revature hosted the summit, not that it announced it; the purpose clause is not in the provided snippet."
+        }
+      ]
+    },
+    {
+      "name": "Scale AI",
+      "intent": "employer",
+      "note": "",
+      "resolvedAs": "Scale AI",
+      "lookalikes": [
+        "Scale AI (Canada's AI Cluster) (Canadian non-profit organization promoting AI integration across business sectors)",
+        "Scale - Crunchbase Company Profile (Crunchbase organization profile entry for Scale AI)"
+      ],
+      "error": null,
+      "seconds": 52.6,
+      "usd": 0.0561217,
+      "tavilyCredits": 9,
+      "llmCalls": {
+        "super": 6,
+        "nano": 6,
+        "ultra": 6
+      },
+      "tavilyRequests": 9,
+      "sources": 33,
+      "setAside": 0,
+      "claims": 24,
+      "held": 15,
+      "corrected": 7,
+      "unsupported": 1,
+      "uncited": 0,
+      "wrongEntity": 1,
+      "sectionsCovered": 5,
+      "sectionsTotal": 5,
+      "decision": "caution",
+      "confidence": 77,
+      "redFlags": [
+        "Scammers are impersonating Scale AI and its subsidiary Outlier AI on LinkedIn with fake recruiter profiles and fraudulent job offers.",
+        "Scale AI laid off ~200 employees (14% of workforce) abruptly in 2025, with impacted staff cut off from systems without notice.",
+        "Employee reviews indicate below-average work-life balance (3.2/5) and culture scores (3.5/5) on Glassdoor despite decent overall ratings."
+      ],
+      "struck": [
+        {
+          "section": "Life as an Employee",
+          "ruling": "unsupported",
+          "claim": "One anonymous Glassdoor review suggests Scale AI may have issues with pay and culture despite a 10% improvement in compensation ratings over the last 12 months.",
+          "reason": "Source [18] only mentions the aggregate compensation rating of 3.8 and a 10% improvement; it does not include any specific review suggesting issues with pay and culture."
+        },
+        {
+          "section": "Recent Developments",
+          "ruling": "wrong_entity",
+          "claim": "In June 2026 IBM and Google Cloud announced a strategic partnership aimed at helping enterprises scale AI into production, leveraging IBM Consulting Advantage and Google Cloud's Gemini models.",
+          "reason": "The claim and cited source 25 concern IBM and Google Cloud, not Scale AI, the subject of this file."
+        }
+      ],
+      "correctedExamples": [
+        {
+          "section": "Identity & Legitimacy",
+          "filed": "Scale AI, Inc. is a privately held U.S. corporation incorporated in 2016, headquartered at 155 5th Street, San Francisco, CA 94103, with Francis deSouza serving as CEO and a reported 2024 revenue of $870 million.",
+          "corrected": "Scale AI, Inc. is a privately held U.S. corporation incorporated in 2016, headquartered at 155 5th Street, San Francisco, with Francis deSouza serving as CEO and a reported 2024 revenue of $870 million.",
+          "reason": "Source 27 does not include the ZIP code 94103 for the headquarters address."
+        },
+        {
+          "section": "Identity & Legitimacy",
+          "filed": "The company employs between 1,001 and 5,000 people and generates annual revenue estimated at $50 million to $100 million, according to its own disclosures.",
+          "corrected": "The company employs between 1,001 and 5,000 people and generates annual revenue estimated at $50 million to $100 million, according to Seamless directory.",
+          "reason": "Source 27 does not state that the revenue and employee figures are the company's own disclosures."
+        },
+        {
+          "section": "Identity & Legitimacy",
+          "filed": "Scale AI operates under the domain scale.com and is recognized as a Y Combinator‑backed startup founded by Alexandr Wang and Lucy Guo, with a current valuation of approximately $29 billion.",
+          "corrected": "Scale AI operates under the domain scale.com and is recognized as a Y Combinator‑backed startup founded by Alexandr Wang and Lucy Guo.",
+          "reason": "None of the cited sources mention a valuation of approximately $29 billion."
+        },
+        {
+          "section": "Recruiting Legitimacy",
+          "filed": "Scale AI, Inc. operates a careers page at https://scale.com/careers where it posts legitimate job openings and details its hiring process, including employee benefits and core values.",
+          "corrected": "Scale AI, Inc. operates a careers page at https://scale.com/careers where it posts legitimate job openings and details its employee benefits and core values.",
+          "reason": "Source [30] shows the careers page with core values, benefits, and open positions, but does not detail the hiring process steps."
+        },
+        {
+          "section": "Recruiting Legitimacy",
+          "filed": "Job seekers should verify offers by contacting the company directly using independently sourced contact information, checking for upfront fees or crypto payments, and avoiding suspicious forms or messaging-app interviews, as legitimate offers do not pressure fast decisions.",
+          "corrected": "Job seekers should verify offers by contacting the company directly using independently sourced contact information and avoid fast decisions, as legitimate offers do not pressure quick commitments.",
+          "reason": "Source [12] advises contacting the company directly using independently sourced contact information and warns that legitimate offers do not pressure fast decisions, but does not mention checking for upfront fees, crypto payments, or messaging-app interviews."
+        },
+        {
+          "section": "Life as an Employee",
+          "filed": "Glassdoor reviews show an average compensation and benefits rating of 3.8 out of 5, with 71% of employees recommending Scale AI to a friend, though some note poor pay and culture.",
+          "corrected": "Glassdoor reviews show an average compensation and benefits rating of 3.8 out of 5, with 71% of employees recommending Scale AI to a friend, and lower ratings for work-life balance (3.2) and culture and values (3.5).",
+          "reason": "Source [19] provides aggregate ratings (compensation 3.8, work-life balance 3.2, culture 3.5) and a positive review snippet, but does not state that some reviewers note poor pay and culture."
+        },
+        {
+          "section": "Life as an Employee",
+          "filed": "Scale AI's employee rating stands at 3.8 out of 5 stars based on 436 Glassdoor company reviews, reflecting mixed but overall neutral sentiment.",
+          "corrected": "Scale AI's employee rating stands at 3.8 out of 5 stars based on 436 Glassdoor company reviews, indicating that most employees have a good working experience and the rating is in line with the industry average.",
+          "reason": "Source [19] states the 3.8 rating based on 436 reviews indicates most employees have a good working experience and is in line with the industry average, not a mixed neutral sentiment."
+        }
+      ]
+    },
+    {
+      "name": "Notion",
+      "intent": "general",
+      "note": "ambiguous name",
+      "resolvedAs": "Notion",
+      "lookalikes": [],
+      "error": null,
+      "seconds": 65.2,
+      "usd": 0.08033760000000001,
+      "tavilyCredits": 12,
+      "llmCalls": {
+        "super": 6,
+        "nano": 7,
+        "ultra": 7
+      },
+      "tavilyRequests": 10,
+      "sources": 42,
+      "setAside": 0,
+      "claims": 27,
+      "held": 14,
+      "corrected": 12,
+      "unsupported": 0,
+      "uncited": 0,
+      "wrongEntity": 1,
+      "sectionsCovered": 6,
+      "sectionsTotal": 6,
+      "decision": "caution",
+      "confidence": 74,
+      "redFlags": [
+        "Active patent infringement lawsuit filed by UBQS-IP, LLC in the Southern District of New York (Case No. 1:2026cv02878, April 2026) creates unresolved legal and potential financial exposure."
+      ],
+      "struck": [
+        {
+          "section": "Legal & Regulatory",
+          "ruling": "wrong_entity",
+          "claim": "Regulatory scrutiny and sanctions for AI-related misconduct in court filings have intensified, with cases involving Notion Labs, Inc. reflecting broader industry trends.",
+          "reason": "Source [23] discusses general AI-related sanctions in court filings and does not mention Notion Labs, Inc.; the patent case in [22] is unrelated to AI misconduct."
+        }
+      ],
+      "correctedExamples": [
+        {
+          "section": "Identity & Legitimacy",
+          "filed": "Notion Labs, Inc. is a Delaware corporation incorporated in 2013, headquartered at 2300 Harrison Street, San Francisco, CA 94110, USA, with additional offices in New York, Dublin, Tokyo, Hyderabad, Seoul, and Sydney.",
+          "corrected": "Notion Labs, Inc. is a Delaware corporation founded in 2013, headquartered at 2300 Harrison Street, San Francisco, CA 94110, USA, with additional offices in New York, Dublin, Tokyo, Hyderabad, and Seoul.",
+          "reason": "Sources 26 and 27 do not mention a Sydney office and give differing office lists; source 27 says founded 2013, not incorporated."
+        },
+        {
+          "section": "Identity & Legitimacy",
+          "filed": "The company was founded in 2016 by Ivan Zhao and Akshay Kothari and has grown to employ 501–1,000 people, serving over 100 million users worldwide.",
+          "corrected": "The company was founded in 2013 by Ivan Zhao, Simon Last, and Akshay Kothari and has grown to employ 501–1,000 people, serving over 100 million users worldwide.",
+          "reason": "Source 27 states founding year 2013 and lists Simon Last as co-founder, while source 2 says 2016; claim uses 2016 and omits Simon Last."
+        },
+        {
+          "section": "What They Do",
+          "filed": "The company serves over 10,210 customers analyzed, representing a 2.71% market share in the productivity and collaboration category, targeting individuals, startups, and small businesses through a freemium model.",
+          "corrected": "Notion targets individuals through a freemium model and serves customer segments including startups and small businesses.",
+          "reason": "Source 13 describes Notion's freemium model and customer segments (individuals) but does not mention the specific figures of 10,210 customers analyzed or 2.71% market share; those metrics appear in Source 11."
+        },
+        {
+          "section": "What They Do",
+          "filed": "Notion leverages community-driven growth, relying on millions of individual users to build awareness and virality, with plans to consider an IPO in late 2026.",
+          "corrected": "Notion leverages community-driven growth, relying on millions of individual users to build awareness and virality.",
+          "reason": "Source 15 discusses Notion's community-driven growth and millions of individual users building awareness, but does not mention any IPO plans; the IPO reference comes from Source 11."
+        },
+        {
+          "section": "Financial Health",
+          "filed": "Notion Labs, Inc. raised $343.2 M total across 3 funding rounds, with its latest round a $275 M Series C in October 2021 that valued the company at $10 B, and later a $270 M secondary tender in January 2026 that pushed its valuation to $11 B–$12 B.",
+          "corrected": "Notion Labs, Inc. raised approximately $343–344M in total funding, with a $275M Series C in October 2021 (valuation around $10B by mid‑2022) and a $270M secondary tender in January 2026 that pushed its valuation to $11B–$12B.",
+          "reason": "Sources disagree on number of funding rounds (source 16 says 3, source 18 says 9) and the $10B valuation at Series C is not explicitly stated in cited sources."
+        },
+        {
+          "section": "Financial Health",
+          "filed": "Notion has not raised primary capital since its 2021 Series C round, indicating limited recent external financing and reliance on existing cash reserves.",
+          "corrected": "Notion has not raised primary capital since its 2021 Series C round.",
+          "reason": "Source 17 confirms no primary capital raised since 2021 Series C, but the added inference about \"limited recent external financing and reliance on existing cash reserves\" is not stated in the source."
+        },
+        {
+          "section": "Legal & Regulatory",
+          "filed": "Attorneys have been fined for submitting AI-generated legal documents containing false citations, with penalties ranging from $1,000 to $12,000 per case.",
+          "corrected": "Attorneys have been fined for submitting AI-generated legal documents containing false citations, with penalties ranging from $1,000 to $31,000 per case.",
+          "reason": "Sources [24] and [25] report fines up to $31,000 (for two law firms), exceeding the claimed $12,000 maximum."
+        },
+        {
+          "section": "Reputation & Complaints",
+          "filed": "Notion is rated 3 out of 5 stars on Trustpilot based on recent reviews, with users noting overall satisfaction but also highlighting inflexible policies and occasional performance issues.",
+          "corrected": "Notion has mixed reviews on Trustpilot, with some users rating it 3 out of 5 stars and expressing satisfaction, while others give 1-star ratings citing inflexible policies and billing issues.",
+          "reason": "Source 29 shows individual reviews with mixed ratings (3, 5, 1, 1 stars) but does not state an overall Trustpilot rating of 3/5, and performance issues are not mentioned in the cited reviews."
+        },
+        {
+          "section": "Reputation & Complaints",
+          "filed": "A Reddit user reported that Notion's performance degrades noticeably beyond 5,000 records per database, becoming frustrating past 10,000 records, indicating scalability concerns for large teams.",
+          "corrected": "A TaskRhino blog review reports that Notion's performance degrades noticeably beyond 5,000 records per database, becoming frustrating past 10,000 records, indicating scalability concerns for large teams.",
+          "reason": "Source 32 is a TaskRhino blog article, not a Reddit user report, though it does contain the performance degradation claims."
+        },
+        {
+          "section": "Reputation & Complaints",
+          "filed": "Some users experience a steep learning curve and sluggish navigation, especially when managing large or complex workspaces, leading to frustration and eventual migration to alternative tools.",
+          "corrected": "Some Reddit users report sluggish navigation and frustration with Notion, leading to migration to alternative tools.",
+          "reason": "Source 31 shows Reddit users reporting sluggish navigation and frustration leading to migration, but the cited snippet does not mention a steep learning curve or specifically large/complex workspaces."
+        },
+        {
+          "section": "Recent Developments",
+          "filed": "The new Agents iOS app enables users to handle voice notes, photos, and questions through AI agents directly from their pocket, reflecting Notion’s broader move into AI‑driven productivity tools.",
+          "corrected": "The new Agents iOS app enables users to handle voice notes, photos, and questions through AI agents directly from their pocket.",
+          "reason": "Source [34] confirms the app handles voice notes, photos, and questions via AI agents, but does not state this reflects a broader strategic move into AI-driven productivity tools."
+        },
+        {
+          "section": "Recent Developments",
+          "filed": "In 2025, Notion introduced AI agents that can automate multi‑step actions across the platform, positioning the tool as a dynamic notebook for both personal productivity and enterprise use.",
+          "corrected": "In 2025, Notion introduced an AI agent that can automate multi-step actions across the platform, positioning the tool as a dynamic notebook for personal productivity such as student tasks.",
+          "reason": "Source [37] mentions a single AI agent automating multi-step actions in the latest version (2025) and describes Notion as a dynamic notebook for student tasks, not enterprise use."
+        }
+      ]
+    },
+    {
+      "name": "Mercury",
+      "intent": "general",
+      "note": "ambiguous name",
+      "resolvedAs": "Mercury",
+      "lookalikes": [
+        "Mercury Systems (a defense and aerospace technology company)",
+        "Mercury Marine (a manufacturer of marine propulsion systems)"
+      ],
+      "error": null,
+      "seconds": 49.7,
+      "usd": 0.050961660000000006,
+      "tavilyCredits": 10,
+      "llmCalls": {
+        "super": 6,
+        "nano": 5,
+        "ultra": 5
+      },
+      "tavilyRequests": 10,
+      "sources": 43,
+      "setAside": 23,
+      "claims": 15,
+      "held": 8,
+      "corrected": 7,
+      "unsupported": 0,
+      "uncited": 0,
+      "wrongEntity": 0,
+      "sectionsCovered": 4,
+      "sectionsTotal": 6,
+      "decision": "caution",
+      "confidence": 61,
+      "redFlags": [
+        "Customers report account closures without clear explanation and funds frozen for up to 60 days, indicating potential operational or compliance process failures.",
+        "Internal teams provide conflicting rules and the CEO has made contradictory statements about customer impact, suggesting governance or communication breakdowns."
+      ],
+      "struck": [],
+      "correctedExamples": [
+        {
+          "section": "Identity & Legitimacy",
+          "filed": "Mercury is an American fintech company founded in 2017 by Immad Akhund, Max Tagher, and Jason Zhang, headquartered in San Francisco, California, with approximately 800 employees and a $3.5 billion valuation as of March 2025 (Funding from CRV, Coatue and Andreessen Horowitz).",
+          "corrected": "Mercury is an American fintech company founded in 2017 by Immad Akhund, Max Tagher, and Jason Zhang, headquartered in San Francisco, California, with approximately 800 employees (per 2024 Wikipedia) or 5,000 employees (per 2025 Forbes) and a $3.5 billion valuation as of March 2025 (funding from CRV, Coatue, and Andreessen Horowitz).",
+          "reason": "Sources disagree on employee count (Wikipedia: 800 in 2024; Forbes: 5,000) and valuation (Wikipedia: $5.2B May 2026; Forbes: $3.5B March 2025)."
+        },
+        {
+          "section": "Identity & Legitimacy",
+          "filed": "The company serves over 300,000 ambitious companies and has retained 92 % of customers six months after the Silicon Valley Bank collapse, ranking 16th on Fortune’s Best Medium Workplaces list for 2023.",
+          "corrected": "The company has retained 92% of customers six months after the Silicon Valley Bank collapse and ranked 16th on Fortune’s Best Medium Workplaces list for 2023.",
+          "reason": "Source 43 supports the 92% retention and Fortune ranking but does not mention serving over 300,000 companies (that figure appears in source 8, not cited)."
+        },
+        {
+          "section": "What They Do",
+          "filed": "Mercury has over 300,000 customers and processed $248B in transaction volume in 2025, generating revenue primarily from interest income on deposits held by venture-backed startups.",
+          "corrected": "Mercury has over 300,000 customers and processed $248B in transaction volume in 2025, generating revenue through three primary channels including interest income on deposits (around $20B), which is particularly lucrative with venture-backed startups.",
+          "reason": "Source [22] states Mercury has three primary revenue channels with interest income as the first, not necessarily primary, and notes the deposits are venture-backed startup deposits; customer count and transaction volume are accurate."
+        },
+        {
+          "section": "What They Do",
+          "filed": "Mercury is designed for VC-backed startups with deposits exceeding $250,000 that need sweep accounts to maximize FDIC insurance coverage and access venture funding.",
+          "corrected": "Mercury is an ideal banking solution for many VC-backed startups, well-suited for customers with deposits exceeding $250,000 who need sweep accounts to maximize FDIC insurance coverage, and advantageous for businesses seeking access to venture funding.",
+          "reason": "Source [25] describes Mercury as ideal for many VC-backed startups and well-suited for those with deposits >$250k needing sweep accounts, and advantageous for businesses seeking venture funding, not that it is exclusively designed for that combined profile."
+        },
+        {
+          "section": "Financial Health",
+          "filed": "Mercury has grown to over 300,000 customers, including roughly one‑third of early‑stage startups, and processes about $156 billion in annual transaction volume, up 64% year‑over‑year.",
+          "corrected": "Mercury has grown to over 200,000 customers and processes about $156 billion in annual transaction volume, up 64% year-over-year.",
+          "reason": "Source 33 reports 200,000+ customers, not over 300,000, and does not mention one-third of early-stage startups."
+        },
+        {
+          "section": "Reputation & Complaints",
+          "filed": "Multiple reviews describe inconsistent internal communications, with different teams providing conflicting rules and the CEO making contradictory statements about customer impact.",
+          "corrected": "One review describes inconsistent internal communications, with different teams providing conflicting rules and the CEO making contradictory statements about customer impact.",
+          "reason": "Source [26] contains only one review describing inconsistent internal communications, not multiple reviews."
+        },
+        {
+          "section": "Reputation & Complaints",
+          "filed": "Some reviewers suspect that positive reviews may be fake or shill content due to similar phrasing and timing across posts.",
+          "corrected": "One reviewer suspects that positive reviews may be fake or shill content due to similar phrasing and timing across posts.",
+          "reason": "Source [26] contains only one reviewer suspecting fake reviews, not multiple reviewers."
+        }
+      ]
+    },
+    {
+      "name": "Freshworks",
+      "intent": "general",
+      "note": "",
+      "resolvedAs": "Freshworks",
+      "lookalikes": [],
+      "error": null,
+      "seconds": 50.4,
+      "usd": 0.0642084,
+      "tavilyCredits": 7,
+      "llmCalls": {
+        "super": 3,
+        "nano": 7,
+        "ultra": 7
+      },
+      "tavilyRequests": 7,
+      "sources": 32,
+      "setAside": 0,
+      "claims": 27,
+      "held": 22,
+      "corrected": 4,
+      "unsupported": 1,
+      "uncited": 0,
+      "wrongEntity": 0,
+      "sectionsCovered": 6,
+      "sectionsTotal": 6,
+      "decision": "caution",
+      "confidence": 89,
+      "redFlags": [
+        "Trustpilot ratings of 2.2/5 and 1.3/5 with repeated complaints about prepaid account cancellations, forced contract renewals with price hikes, disabled accounts, login failures, and poor support indicate systemic customer-experience problems that could drive churn.",
+        "Q1 2026 GAAP operating loss of $8.1M, a restructuring cutting ~11% of staff, and a full-year profit forecast below Street expectations show the company is not yet sustainably profitable and is undergoing disruptive cost cuts."
+      ],
+      "struck": [
+        {
+          "section": "Financial Health",
+          "ruling": "unsupported",
+          "claim": "Financial metrics from Simply Wall St show declining earnings trends and negative earnings per share in recent quarters, underscoring ongoing profitability pressure.",
+          "reason": "Source 23 shows positive earnings in the most recent quarters (Q1 and Q2 2026) and does not provide earnings per share; the claim of declining earnings trends and negative EPS is contradicted by the data."
+        }
+      ],
+      "correctedExamples": [
+        {
+          "section": "What They Do",
+          "filed": "The company offers AI-powered customer and employee service software including CRM, IT service management, and unified service operations platforms such as Freshdesk, Freshservice, and Freshworks CRM",
+          "corrected": "The company offers AI-powered customer and employee service software including CRM, IT service management, and unified service operations platforms such as the Freshdesk suite and IT service management products.",
+          "reason": "Cited sources mention Freshdesk product family and IT service management offerings but do not list 'Freshservice' or 'Freshworks CRM' as specific product names."
+        },
+        {
+          "section": "Financial Health",
+          "filed": "The company ended the quarter with $780 million in cash and generated $62.4 million of operating cash flow, indicating sufficient liquidity to meet short‑term obligations despite the loss.",
+          "corrected": "The company ended the quarter with $780.4 million in cash and generated $62.4 million of operating cash flow.",
+          "reason": "Source 20 reports cash of $780.4M and operating cash flow of $62.4M but does not state that this indicates sufficient liquidity to meet short‑term obligations."
+        },
+        {
+          "section": "Financial Health",
+          "filed": "Freshworks’ shares fell more than 8% in extended trading after the layoff announcement, reflecting market concern over the company’s profitability outlook.",
+          "corrected": "Freshworks’ shares fell more than 8% in extended trading after the layoff announcement.",
+          "reason": "Source 18 notes shares fell more than 8% in extended trading but does not attribute the decline to market concern over profitability outlook."
+        },
+        {
+          "section": "Legal & Regulatory",
+          "filed": "In the securities class action Sundaram v. Freshworks Inc. (Case No. 22-cv-06750-CRB), U.S. District Judge Charles Breyer granted summary judgment to Freshworks, ruling that no omission caused the stock price to drop below the IPO price and dismissing Section 11 claims except those related to Item 303 of Regulation S-K [27]",
+          "corrected": "In the securities class action Sundaram v. Freshworks Inc. (Case No. 22-cv-06750-CRB), U.S. District Judge Charles Breyer granted summary judgment to Freshworks, ruling that no omission caused the stock price to drop below the IPO price and that Section 11 plaintiffs cannot recover for stock price declines above the IPO price.",
+          "reason": "Source [27] does not mention Item 303 of Regulation S-K; it only reports the judge ruled no omission caused the stock price to drop below the IPO price and that Section 11 plaintiffs cannot recover for drops above the IPO price."
+        }
+      ]
+    }
+  ]
+}

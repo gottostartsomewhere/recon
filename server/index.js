@@ -10,7 +10,31 @@ import { runDemo } from './demo.js';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const app = express();
+app.set('trust proxy', true); // hosts like Render put the visitor's address in X-Forwarded-For
 app.use(express.json());
+
+// Every live check spends Token Factory credit (about $0.06 each), so a public
+// deploy caps them per day and per visitor; past the cap the visitor gets the
+// recorded sample. Unset means unlimited, for local use. Counts live in memory
+// and reset on restart, so this bounds a burst rather than acting as billing.
+// 0 is a real limit (sample only). When unset, a hosted deploy still gets a cap,
+// because a host that ignores the blueprint's variables must not mean unlimited
+// spend; only local runs default to unlimited. Render sets RENDER=true.
+const hosted = Boolean(process.env.RENDER) || process.env.NODE_ENV === 'production';
+const limit = (v, fallback) => (v === undefined || v === '' || Number.isNaN(Number(v)) ? fallback : Number(v));
+const DAILY_CAP = limit(process.env.LIVE_CHECKS_PER_DAY, hosted ? 15 : Infinity);
+const PER_IP_CAP = limit(process.env.LIVE_CHECKS_PER_IP, hosted ? 3 : Infinity);
+const quota = { day: '', total: 0, byIp: new Map() };
+
+function takeLiveCheck(ip) {
+  const day = new Date().toISOString().slice(0, 10);
+  if (quota.day !== day) Object.assign(quota, { day, total: 0, byIp: new Map() });
+  if (quota.total >= DAILY_CAP) return 'daily-cap';
+  if ((quota.byIp.get(ip) || 0) >= PER_IP_CAP) return 'ip-cap';
+  quota.total += 1;
+  quota.byIp.set(ip, (quota.byIp.get(ip) || 0) + 1);
+  return null;
+}
 
 // Permissive CORS (dev convenience; Vite proxies /api in normal use).
 app.use((req, res, next) => {
@@ -22,7 +46,8 @@ app.use((req, res, next) => {
 });
 
 app.get('/api/health', (_req, res) => {
-  res.json({ ok: true, ...hasKeys() });
+  const liveLeft = DAILY_CAP === Infinity ? null : Math.max(0, DAILY_CAP - (quota.day === new Date().toISOString().slice(0, 10) ? quota.total : 0));
+  res.json({ ok: true, ...hasKeys(), liveLeft });
 });
 
 app.post('/api/research', async (req, res) => {
@@ -39,11 +64,12 @@ app.post('/api/research', async (req, res) => {
   };
 
   const keys = hasKeys();
-  const useDemo = Boolean(demo) || !keys.nebius || !keys.tavily;
+  let sampleReason = demo ? 'requested' : !keys.nebius || !keys.tavily ? 'missing-keys' : null;
+  if (!sampleReason && (query || '').trim()) sampleReason = takeLiveCheck(req.ip);
 
   try {
-    if (useDemo) {
-      emit('mode', { demo: true, reason: keys.nebius && keys.tavily ? 'requested' : 'missing-keys' });
+    if (sampleReason) {
+      emit('mode', { demo: true, reason: sampleReason });
       await runDemo(query, emit);
     } else {
       emit('mode', { demo: false });

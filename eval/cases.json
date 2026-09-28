@@ -1,0 +1,22 @@
+[
+  { "name": "Byju's", "intent": "client", "note": "known-bad: payment defaults and insolvency proceedings" },
+  { "name": "Builder.ai", "intent": "client", "note": "known-bad: collapsed into insolvency in 2025" },
+  { "name": "WeWork", "intent": "client" },
+  { "name": "Paytm", "intent": "client" },
+  { "name": "Toptal", "intent": "vendor" },
+  { "name": "Deel", "intent": "vendor" },
+  { "name": "Zoho", "intent": "vendor" },
+  { "name": "Razorpay", "intent": "vendor" },
+  { "name": "Ramp", "intent": "vendor", "note": "ambiguous name" },
+  { "name": "Stripe", "intent": "partner" },
+  { "name": "Wirecard", "intent": "partner", "note": "known-bad: collapsed in a 2020 accounting fraud" },
+  { "name": "Rippling", "intent": "partner" },
+  { "name": "Crossover", "intent": "employer", "note": "ambiguous name" },
+  { "name": "Turing", "intent": "employer", "note": "ambiguous name" },
+  { "name": "Mercor", "intent": "employer" },
+  { "name": "Revature", "intent": "employer" },
+  { "name": "Scale AI", "intent": "employer" },
+  { "name": "Notion", "intent": "general", "note": "ambiguous name" },
+  { "name": "Mercury", "intent": "general", "note": "ambiguous name" },
+  { "name": "Freshworks", "intent": "general" }
+]

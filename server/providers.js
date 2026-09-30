@@ -16,6 +16,19 @@ export function hasKeys() {
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
+// A provider that turns the account away (bad key, no balance, plan used up)
+// will turn every later call away too, so this ends a check instead of
+// letting each stage degrade around it.
+export class ProviderDown extends Error {
+  constructor(provider, status, detail = '') {
+    const who = provider === 'tavily' ? 'Tavily' : 'Token Factory';
+    super(`${who} ${status}${detail ? `: ${String(detail).slice(0, 180)}` : ''}`);
+    this.name = 'ProviderDown';
+    this.provider = provider;
+    this.status = status;
+  }
+}
+
 // Work is routed by how much thinking it needs, not sent to one model:
 //   fast  - Nano: identity, vitals, first-draft sections. Many small calls.
 //   agent - Super: drives the investigation loop and picks the next tool call.
@@ -182,7 +195,28 @@ export async function llm(
       continue;
     }
 
-    if (res.status === 400 || res.status === 404) {
+    // An overloaded endpoint usually recovers within seconds; retry briefly,
+    // then try the next model in the chain.
+    if (res.status >= 500) {
+      if (attempt < 2) {
+        await sleep(1500 * (attempt + 1));
+        continue;
+      }
+      if (rung < chain.length - 1) {
+        rung += 1;
+        body.model = chain[rung];
+        console.warn(`[recon] "${chain[rung - 1]}" answered ${res.status}, falling back to "${chain[rung]}"`);
+        continue;
+      }
+    }
+
+    if (res.status === 401 || res.status === 402) {
+      throw new ProviderDown('nebius', res.status, await res.text().catch(() => ''));
+    }
+
+    // 403 may be one model closed to this account, so walk the chain before
+    // concluding the whole account is refused.
+    if (res.status === 400 || res.status === 403 || res.status === 404) {
       const t = await res.text().catch(() => '');
       if (body.chat_template_kwargs && /chat_template_kwargs|enable_thinking/i.test(t)) {
         templateKwargsRejected = true;
@@ -195,6 +229,7 @@ export async function llm(
         console.warn(`[recon] "${chain[rung - 1]}" answered ${res.status}, falling back to "${chain[rung]}"`);
         continue;
       }
+      if (res.status === 403) throw new ProviderDown('nebius', 403, t);
       throw new Error(`Token Factory ${res.status}: ${t.slice(0, 180)}`);
     }
 
@@ -225,6 +260,8 @@ async function tavily(path, payload, estimate) {
   });
   if (!res.ok) {
     const t = await res.text().catch(() => '');
+    // 401 and 403 are a bad key; 432 and 433 mean the plan's or pay-as-you-go credits are used up.
+    if ([401, 403, 432, 433].includes(res.status)) throw new ProviderDown('tavily', res.status, t);
     throw new Error(`Tavily ${path} ${res.status}: ${t.slice(0, 180)}`);
   }
   const data = await res.json();

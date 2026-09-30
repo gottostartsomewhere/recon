@@ -76,7 +76,16 @@ export default function App() {
     setS((prev) => {
       switch (type) {
         case 'mode':
-          return { ...prev, demo: !!data.demo, demoReason: data.reason || null };
+          // Normally the first event. A live check the provider refuses switches
+          // to the sample mid-stream, so drop whatever the live run had shown.
+          return {
+            ...initialState(),
+            phase: prev.phase,
+            statusLabel: prev.statusLabel,
+            startedAt: prev.startedAt,
+            demo: !!data.demo,
+            demoReason: data.reason || null,
+          };
         case 'status':
           return {
             ...prev,
@@ -510,6 +519,14 @@ function SampleNotice({ reason }) {
           ? "Today's live checks are used up, since each one runs on paid Nemotron inference."
           : "You've used this connection's live checks for today, since each one runs on paid Nemotron inference."}{' '}
         This is a recorded live check instead. The quota resets at 00:00 UTC.
+      </div>
+    );
+  }
+  if (reason === 'unavailable') {
+    return (
+      <div className="notice">
+        Live checks are unavailable right now because the model or search provider turned the request down. This is a
+        recorded live check instead. Try again in a few minutes.
       </div>
     );
   }

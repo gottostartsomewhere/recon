@@ -13,7 +13,7 @@
 //   6. VERDICT     — Ultra decides from surviving claims only; confidence is
 //                    computed from what survived, not self-reported
 
-import { llm, safeJson, tavilySearch, tavilyExtract, tavilyMap } from './providers.js';
+import { llm, safeJson, tavilySearch, tavilyExtract, tavilyMap, ProviderDown } from './providers.js';
 import { resolveIntent } from './intents.js';
 
 // The investigator's budget. Every tool call is a Tavily request, so this is
@@ -21,6 +21,14 @@ import { resolveIntent } from './intents.js';
 const MAX_TURNS = 4;
 const MAX_TOOL_CALLS = 10;
 const MAX_CALLS_PER_SECTION = 2;
+
+// Every stage below survives its own failure and files what it has, so one
+// slow model or one unreadable page never sinks a check. A provider refusing
+// the account is different: every later call fails the same way, and a file
+// written around that is a page of error notes, so it ends the run instead.
+function rethrowIfDown(e) {
+  if (e instanceof ProviderDown) throw e;
+}
 
 export async function runResearch(query, emit, { intent: intentId, meter } = {}) {
   const entity = (query || '').trim();
@@ -49,6 +57,7 @@ export async function runResearch(query, emit, { intent: intentId, meter } = {})
   await Promise.all(
     intent.sections.map((sec) =>
       ledger.search(sec.seed(identity.name), sec.id, { maxResults: 5, ...sec.search }).catch((e) => {
+        rethrowIfDown(e);
         emit('log', { level: 'warn', text: `Search failed · ${sec.title}: ${e.message}` });
       })
     )
@@ -73,6 +82,9 @@ export async function runResearch(query, emit, { intent: intentId, meter } = {})
     emit('section', section);
     drafts.push(section);
   }
+  // Nothing could be written at all: the provider is down in a way its status
+  // codes did not name, and there is no check left to show.
+  if (drafts.every((d) => d.failed)) throw new ProviderDown('nebius', 'failed on every section', drafts[0].failed);
 
   // ── 5. CROSS-EXAMINE (parallel) ──────────────────────────────
   // A citation shows where a claim came from, not that the source says it or
@@ -217,6 +229,7 @@ async function identify(entity, ledger, emit) {
         .slice(0, 8);
     }
   } catch (e) {
+    rethrowIfDown(e);
     emit('log', { level: 'warn', text: `Identity check unavailable (${e.message}); using the name as typed.` });
   }
   return identity;
@@ -341,6 +354,7 @@ async function investigate(identity, intent, ledger, emit) {
     try {
       msg = await llm(messages, { tier: 'agent', tools, temperature: 0.2 });
     } catch (e) {
+      rethrowIfDown(e);
       emit('log', { level: 'warn', text: `Investigator unavailable (${e.message}); filing with the sweep alone.` });
       return;
     }
@@ -369,6 +383,7 @@ async function investigate(identity, intent, ledger, emit) {
         try {
           return await runTool(name, args, section, ledger, identity);
         } catch (e) {
+          rethrowIfDown(e);
           emit('log', { level: 'warn', text: `${name} failed: ${e.message}` });
           return `Error: ${e.message}`;
         }
@@ -459,6 +474,7 @@ async function screenSources(identity, ledger, emit) {
       });
     }
   } catch (e) {
+    rethrowIfDown(e);
     emit('log', { level: 'warn', text: `Screening unavailable (${e.message}); cross-examination will catch mix-ups.` });
   }
 }
@@ -525,11 +541,13 @@ async function synthSection(identity, intent, sec, secSources, emit) {
     }
     return { id: sec.id, title: sec.title, bullets };
   } catch (e) {
+    rethrowIfDown(e);
     emit('log', { level: 'warn', text: `Analysis failed · ${sec.title}: ${e.message}` });
     return {
       id: sec.id,
       title: sec.title,
       bullets: [{ text: `Could not synthesize this section (${e.message}).`, sources: [], meta: true }],
+      failed: e.message,
     };
   }
 }
@@ -563,7 +581,8 @@ async function synthVitals(identity, sources) {
       { tier: 'fast', json: true, temperature: 0.1 }
     );
     return out && typeof out === 'object' ? out : null;
-  } catch {
+  } catch (e) {
+    rethrowIfDown(e);
     return null;
   }
 }
@@ -635,6 +654,7 @@ async function crossExamine(identity, section, ledger, emit) {
     }
     return { ...section, bullets, examined: true };
   } catch (e) {
+    rethrowIfDown(e);
     emit('log', { level: 'warn', text: `Cross-examination failed · ${section.title}: ${e.message}` });
     return section;
   }
@@ -715,6 +735,7 @@ async function synthVerdict(identity, intent, standing, sourceCount) {
       askThem: Array.isArray(out?.askThem) ? out.askThem.map(String).slice(0, 4) : [],
     };
   } catch (e) {
+    rethrowIfDown(e);
     return { decision: 'caution', verdict: `Could not synthesize a verdict (${e.message}).`, redFlags: [], askThem: [] };
   }
 }

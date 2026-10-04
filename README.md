@@ -18,7 +18,12 @@ Built on NVIDIA Nemotron, served by Nebius Token Factory, researched through Tav
 ## The problem
 
 Before you take someone on as a client, hire a vendor, sign a partnership or accept a job
-offer, you look them up. AI research tools make that faster, and they fail in a specific way:
+offer, you look them up. The people who most need that check have nobody to do it for them: a
+freelancer deciding whether a new client will pay, a small agency choosing a vendor, someone
+weighing a remote job offer. Job scam losses reported to the FTC went from $90 million in 2020 to
+$501 million in 2024 ([FTC](https://consumer.ftc.gov/all-scams/job-scams)).
+
+AI research tools make the lookup faster, and they fail in a specific way:
 every sentence comes with a citation, and a good share of those citations do not say what the
 sentence says, or are about a different company with the same name.
 
@@ -117,12 +122,45 @@ through its OpenAI-compatible API ([`server/providers.js`](server/providers.js))
 - **Exact per-check cost.** Token Factory publishes per-token prices, so every check reports what
   it cost by model, shown at the bottom of each file.
 
+Where Token Factory sped up the work:
+
+- **Switching providers took one file.** The API is OpenAI-compatible, so moving off the previous
+  provider meant rewriting [`server/providers.js`](server/providers.js) and nothing else.
+- **One key, three sizes.** All three Nemotron tiers sit behind one endpoint, so trying a different
+  model for a stage is an environment variable (`NEMOTRON_FAST`, `NEMOTRON_AGENT`,
+  `NEMOTRON_JUDGE`), not a new integration.
+- **Capabilities checked in one run.** The probe script tests every tier for the thinking toggle,
+  JSON mode, JSON schema and tool calling, and costs under a cent.
+- **Cheap enough to measure.** The 20-company eval made 345 model calls, three checks at a time,
+  for $1.20, with no rate-limit errors, timeouts or fallbacks.
+- **Nothing to host.** No GPUs to provision and no models to deploy: the app runs on a free Render
+  instance and Token Factory does all the inference. It is the only Nebius service Recon uses.
+
 ## How it uses Tavily
 
-Tavily is the investigator's hands: **search** (with news and time-range filters for recent
-developments), **extract** with a query so a long terms page or annual report comes back as the
-relevant chunks, and **map** to find a company's own about, legal and careers pages. Credits are
-metered per check alongside inference cost.
+Tavily is how the agent sees the web ([`server/providers.js`](server/providers.js),
+[`server/agent.js`](server/agent.js)).
+
+- **A sweep shaped by the decision.** Each check opens with one search per question the intent
+  calls for, and each is seeded for that question: "unpaid invoices late payment freelancers"
+  when you are taking on a client, "recruitment scam fake job offer" when you are weighing a job
+  offer ([`server/intents.js`](server/intents.js)). Recent developments use the `news` topic
+  with a one-year `time_range`.
+- **Three tools for the investigator.** Super calls `search`; `read`, which is **extract** with a
+  focus query and `chunks_per_source: 3`, so a long filing or terms page comes back as the parts
+  that matter; and `map_site`, which is **map** at depth 1, to find the company's own about,
+  legal and careers pages.
+- **Full text feeds the judge.** A page read in full gives the drafter more than a snippet, and
+  it is what Ultra reads when it rules on a claim that cites it.
+- **Names are not organisations.** Search matches names, so 137 of the 837 pages in the eval
+  were about someone else (CodeWeavers' CrossOver in a Crossover file, the Alan Turing Institute
+  in a Turing file). Super screens them out before anything is drafted.
+- **Metered.** Every request sets `include_usage`, and each file reports its credits next to its
+  inference cost.
+
+Across the 20-company eval that came to 177 searches, 16 full-page reads and 9 site maps: 195
+credits, about 10 a check. The full-page reads reached primary sources such as UK Companies
+House, SEC EDGAR filings and companies' own legal pages.
 
 ## Run it locally
 
@@ -154,7 +192,11 @@ Useful scripts:
 One service serves the API and the built frontend. [`render.yaml`](render.yaml) deploys it on
 Render's free tier; set `NEBIUS_API_KEY` and `TAVILY_API_KEY` in the dashboard.
 `LIVE_CHECKS_PER_DAY` and `LIVE_CHECKS_PER_IP` cap live checks (15 and 3 in the blueprint, 0 for
-sample only); past the cap a visitor gets the recorded sample with a note saying why.
+sample only); past the cap a visitor gets the recorded sample with a note saying why. If a
+provider refuses the account (a bad key, no balance), the check switches to the sample with a
+note and live checks pause for ten minutes, instead of filing a report built from error messages.
+A [GitHub Actions workflow](.github/workflows/keep-alive.yml) pings `/api/health` every five
+minutes so the free instance doesn't fall asleep between visitors.
 
 ## Limits
 
